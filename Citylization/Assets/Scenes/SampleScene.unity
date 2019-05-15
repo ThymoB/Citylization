@@ -705,17 +705,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 614177748}
     m_Modifications:
+    - target: {fileID: 762445558841079645, guid: 8b0042998493b624da4657aeae5c0a1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Farming
+      objectReference: {fileID: 0}
     - target: {fileID: -3809780358480250310, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: technology
       value: 
       objectReference: {fileID: 11400000, guid: 2cc0c3ced5143c94ea5c3c62f341c643,
         type: 2}
-    - target: {fileID: 762445558841079645, guid: 8b0042998493b624da4657aeae5c0a1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Farming
-      objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -774,7 +774,7 @@ PrefabInstance:
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -372
+      value: -144
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
@@ -784,12 +784,12 @@ PrefabInstance:
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
@@ -2542,6 +2542,7 @@ MonoBehaviour:
   floatingScience: 0
   allTechnologies:
   - {fileID: 11400000, guid: 1a310031147cde942ac9eb84b931eb5f, type: 2}
+  - {fileID: 11400000, guid: 2cc0c3ced5143c94ea5c3c62f341c643, type: 2}
   totalNumberOfTechs: 0
   numberOfTechsResearched: 0
 --- !u!1001 &1540520239
@@ -2551,17 +2552,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 614177748}
     m_Modifications:
+    - target: {fileID: 762445558841079645, guid: 8b0042998493b624da4657aeae5c0a1d,
+        type: 3}
+      propertyPath: m_Name
+      value: Settlement
+      objectReference: {fileID: 0}
     - target: {fileID: -3809780358480250310, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: technology
       value: 
       objectReference: {fileID: 11400000, guid: 1a310031147cde942ac9eb84b931eb5f,
         type: 2}
-    - target: {fileID: 762445558841079645, guid: 8b0042998493b624da4657aeae5c0a1d,
-        type: 3}
-      propertyPath: m_Name
-      value: Settlement
-      objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2620,7 +2621,7 @@ PrefabInstance:
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -493
+      value: -380
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
@@ -2630,12 +2631,12 @@ PrefabInstance:
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 952600047496060537, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}

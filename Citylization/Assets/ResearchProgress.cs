@@ -7,8 +7,6 @@ using UnityEngine.Events;
 public class ResearchProgress : MonoBehaviour
 {
     private UnityAction scienceListener;
-    public float needed;
-    public float current;
 
     public Technology technology;
     public RectTransform blueBar;
@@ -29,12 +27,22 @@ public class ResearchProgress : MonoBehaviour
         scienceListener = new UnityAction(UpdateProgress);
     }
 
+
+    private void Start()
+    {
+
+    }
+
+    public void OnOpenPanel()
+    {
+        UpdateProgress();
+    }
+
     public void UpdateProgress()
     {
-        needed = technology.costToResearch;
-        TechManager.instance.technologyProgress.TryGetValue(technology, out current);
-        blueBar.localScale = new Vector3(current / needed, 1f, 1f);
-        numbers.text = current.ToString() + "/" + needed.ToString();
+        TechManager.instance.technologyProgress.TryGetValue(technology, out TechInfo techInfo);
+        blueBar.localScale = new Vector3(techInfo.progress / technology.costToResearch, 1f, 1f);
+        numbers.text = techInfo.progress.ToString() + "/" + technology.costToResearch.ToString();
     }
 
 }

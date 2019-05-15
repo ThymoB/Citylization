@@ -10,8 +10,9 @@ public class TechManager : MonoBehaviour
     public float floatingScience;
 
     public List<Technology> allTechnologies;
+    public List<Technology> availableTechnologies;
 
-    public Dictionary<Technology, float> technologyProgress = new Dictionary<Technology, float>();
+    public Dictionary<Technology, TechInfo> technologyProgress = new Dictionary<Technology, TechInfo>();
 
     [SerializeField]
     private int totalNumberOfTechs;
@@ -67,8 +68,23 @@ public class TechManager : MonoBehaviour
     {
         foreach (Technology tech in allTechnologies)
         {
-            technologyProgress.Add(tech, 0f);
+            if (Player.instance.learnedTechnologies.Contains(tech))
+                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Completed));
+            else if (CanLearnTech(tech))
+                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Available));
+            else
+                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Unavailable));
         }
+    }
+
+    public bool CanLearnTech(Technology technology)
+    {
+
+        if (!technology.requiredTechs.Contains(technology))
+            return false;
+        
+
+        return true;
     }
 
 
@@ -76,8 +92,8 @@ public class TechManager : MonoBehaviour
     {
         if (currentlyResearching != null)
         {
-            technologyProgress[currentlyResearching] += amount;
-            if (technologyProgress[currentlyResearching] >= currentlyResearching.costToResearch)
+            technologyProgress[currentlyResearching].progress += amount;
+            if (technologyProgress[currentlyResearching].progress >= currentlyResearching.costToResearch)
                 AwardCurrentTechToPlayer();
         }
         else floatingScience += amount;
@@ -87,7 +103,15 @@ public class TechManager : MonoBehaviour
     {
         Player.instance.learnedTechnologies.Add(currentlyResearching);
         lastCompleted = currentlyResearching;
+        technologyProgress[lastCompleted].techStatus = TechStatus.Completed;
         currentlyResearching = null;
     }
+
+    public void AddFloatingToTech()
+    {
+        technologyProgress[currentlyResearching].progress += floatingScience;
+        floatingScience = 0;
+    }
+
 
 }

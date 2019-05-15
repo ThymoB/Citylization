@@ -14,6 +14,7 @@ public class TechnologyButton : MonoBehaviour
 
     [Header("Outline")]
     public Outline outline;
+    public Color availableColor;
     public Color completedColor;
     public Color researchingColor;
     public Color unavailableColor;
@@ -61,6 +62,32 @@ public class TechnologyButton : MonoBehaviour
 
     public void SelectTech()
     {
+        if (TechManager.instance.technologyProgress[technology].techStatus==TechStatus.Available)
+        {
+            TechManager.instance.currentlyResearching = technology;
+            TechManager.instance.AddFloatingToTech();
+        }
+    }
 
+    private void Update()
+    {
+        switch (TechManager.instance.technologyProgress[technology].techStatus)
+        {
+            case TechStatus.Unavailable:
+                outline.effectColor = unavailableColor;
+                break;
+
+            case TechStatus.Available:
+                outline.effectColor = availableColor;
+                break;
+
+            case TechStatus.Researching:
+                outline.effectColor = researchingColor;
+                break;
+
+            case TechStatus.Completed:
+                outline.effectColor = completedColor;
+                break;
+        }
     }
 }

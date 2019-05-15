@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\ResourceYield.cs" />
     <Compile Include="Assets\Scripts\Road.cs" />
     <Compile Include="Assets\Scripts\SunLight.cs" />
+    <Compile Include="Assets\Scripts\TechInfo.cs" />
     <Compile Include="Assets\Scripts\Technology.cs" />
     <Compile Include="Assets\Scripts\TimeGetter.cs" />
     <Compile Include="Assets\Scripts\TimeSystem.cs" />
