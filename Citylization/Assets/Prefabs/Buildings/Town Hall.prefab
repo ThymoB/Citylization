@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7304773006055931294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7304773006055931292}
+  - component: {fileID: 7304773006055931295}
+  - component: {fileID: 7304773006055931293}
+  - component: {fileID: 7304773006055931290}
+  m_Layer: 0
+  m_Name: Town Hall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7304773006055931292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6106099771695511102}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7304773006055931295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48835a4d6d07a9e4f9e341c0254ca65d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  era: 0
+  description: 
+  requiredTech: {fileID: 0}
+  obsolete: {fileID: 0}
+  resourceYields:
+  - {fileID: 7304773006055931293}
+  - {fileID: 7304773006055931290}
+  globalEffectiveRange: 1
+  effectiveRange: 0
+  showRange: 0
+  popInRange: 0
+  openTime: 8
+  closeTime: 20
+  operating: 0
+  models:
+  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+--- !u!114 &7304773006055931293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: 9b0b73cfb5e851f4db676a2d06e2bdfa, type: 2}
+  amount: 5
+  useRandomInterval: 0
+  useAmountPerHousehold: 0
+  amountPerHousehold: 1
+  estimateYield: 0
+  yieldPerHour: 0
+  yieldPerDay: 0
+  totalYieldPerDay:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  change: 0
+  useCapacity: 0
+  capacity: 0
+--- !u!114 &7304773006055931290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
+  amount: 1
+  useRandomInterval: 0
+  useAmountPerHousehold: 0
+  amountPerHousehold: 1
+  estimateYield: 0
+  yieldPerHour: 0
+  yieldPerDay: 0
+  totalYieldPerDay:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  change: 0
+  useCapacity: 0
+  capacity: 0
+--- !u!1001 &7304773006633339829
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7304773006055931292}
+    m_Modifications:
+    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Town Hall test model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+--- !u!4 &6106099771695511102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7304773006633339829}
+  m_PrefabAsset: {fileID: 0}
