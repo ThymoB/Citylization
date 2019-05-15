@@ -140,7 +140,7 @@ public class GeneratingBuilding : Building
                 if(!resourceYield.useCapacity || resourceYield.yieldPerDay+resourceYield.yieldPerHour < resourceYield.capacity)
                 {
                     resourceYield.yieldPerHour+=resourceYield.amount;
-                    ResourceSystem.instance.AddToPlayer(resourceYield.resource, 1f, transform, resourceYield.amount);
+                    ResourceSystem.instance.AddToPlayer(resourceYield.resource, 1f, transform, 1f);
                 }
                 delay = CalculateDelay(resourceYield, closeTime - openTime);
             }

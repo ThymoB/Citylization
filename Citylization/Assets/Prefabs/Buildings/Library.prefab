@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1858614317551625879}
   - component: {fileID: 1858614317551625873}
   - component: {fileID: 1858614317551625872}
+  - component: {fileID: 7480977593516313668}
+  - component: {fileID: -2947134293249751022}
   m_Layer: 0
   m_Name: Library
   m_TagString: Untagged
@@ -45,10 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48835a4d6d07a9e4f9e341c0254ca65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  era: 0
-  description: 
-  requiredTech: {fileID: 0}
-  obsolete: {fileID: 0}
+  canBePickedUp: 0
+  abilities: []
   resourceYields:
   - {fileID: 1858614317551625872}
   globalEffectiveRange: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
   amount: 1
   useRandomInterval: 1
+  active: 0
   useAmountPerHousehold: 1
   amountPerHousehold: 2
   estimateYield: 0
@@ -108,6 +109,35 @@ MonoBehaviour:
   change: 0
   useCapacity: 0
   capacity: 10
+--- !u!114 &7480977593516313668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858614317551625878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: A Library
+--- !u!114 &-2947134293249751022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858614317551625878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8ec2c39f0552468e382e604119d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconOnTechTree: {fileID: 21300000, guid: 79cd9d00147ceed4aa5794bac8165530, type: 3}
+  isUnlocked: 0
+  unlockableType: 0
+  obsolete: {fileID: 0}
 --- !u!1 &3386024727513488149
 GameObject:
   m_ObjectHideFlags: 0

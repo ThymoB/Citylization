@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 7304773006055931295}
   - component: {fileID: 7304773006055931293}
   - component: {fileID: 7304773006055931290}
+  - component: {fileID: 987981055367886343}
+  - component: {fileID: 2932237071825397720}
   m_Layer: 0
-  m_Name: Town Hall
+  m_Name: Governor's Hut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,10 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48835a4d6d07a9e4f9e341c0254ca65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  era: 0
-  description: 
-  requiredTech: {fileID: 0}
-  obsolete: {fileID: 0}
+  canBePickedUp: 0
+  abilities:
+  - {fileID: 2215413927009473708, guid: 676ccd6cbd2241940a2971db3676f993, type: 3}
   resourceYields:
   - {fileID: 7304773006055931293}
   - {fileID: 7304773006055931290}
@@ -77,6 +78,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 9b0b73cfb5e851f4db676a2d06e2bdfa, type: 2}
   amount: 5
   useRandomInterval: 0
+  active: 0
   useAmountPerHousehold: 0
   amountPerHousehold: 1
   estimateYield: 0
@@ -125,6 +127,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
   amount: 1
   useRandomInterval: 0
+  active: 0
   useAmountPerHousehold: 0
   amountPerHousehold: 1
   estimateYield: 0
@@ -158,6 +161,35 @@ MonoBehaviour:
   change: 0
   useCapacity: 0
   capacity: 0
+--- !u!114 &987981055367886343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8ec2c39f0552468e382e604119d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconOnTechTree: {fileID: 21300000, guid: c1b387eb94cb50e4982ea96f9df31386, type: 3}
+  isUnlocked: 0
+  unlockableType: 0
+  obsolete: {fileID: 0}
+--- !u!114 &2932237071825397720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Primal Government building
 --- !u!1001 &7304773006633339829
 PrefabInstance:
   m_ObjectHideFlags: 0

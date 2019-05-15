@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Technology : MonoBehaviour
+[CreateAssetMenu(fileName ="New Technology", menuName = "Technology", order =1)]
+public class Technology : ScriptableObject
 {
+    public Era era;
     public Sprite icon;
     public string description;
     public List<Technology> requiredTechs = new List<Technology>();
-
-    public abstract void Unlocks();
+    public float costToResearch;
+    public List<Unlockable> unlocks = new List<Unlockable>();
 
 }

@@ -4,20 +4,7 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public Era era;
-    public string description;
-    public Technology requiredTech;
-    public Technology obsolete;
+    public bool canBePickedUp = false;
+    public List<Ability> abilities;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

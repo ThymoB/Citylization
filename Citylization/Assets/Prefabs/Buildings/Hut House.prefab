@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6134359838356149885}
   - component: {fileID: 6134359838356149886}
+  - component: {fileID: 5887775813337426641}
+  - component: {fileID: 138669900454346041}
   m_Layer: 8
   m_Name: Hut
   m_TagString: Household
@@ -44,11 +46,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8c7282f211a68469275b0ccfd2ec67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  era: 0
-  description: 
-  requiredTech: {fileID: 0}
-  obsolete: {fileID: 0}
+  canBePickedUp: 0
+  abilities: []
   residents: 3
+--- !u!114 &5887775813337426641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8ec2c39f0552468e382e604119d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconOnTechTree: {fileID: 21300000, guid: 0f0068617291d43418baf48cc4927434, type: 3}
+  isUnlocked: 0
+  unlockableType: 0
+  obsolete: {fileID: 0}
+--- !u!114 &138669900454346041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: A small hut housing citizens.
 --- !u!1 &7068139677682952166
 GameObject:
   m_ObjectHideFlags: 0

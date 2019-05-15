@@ -28,7 +28,7 @@ public class ResourceSystem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void AddToPlayer(Resource resource, float amount, Transform building, float speed)
+    public void AddToPlayer(Resource resource, float amount, Transform source, float speed)
     {
         if (amount>0)
         {
@@ -36,10 +36,17 @@ public class ResourceSystem : MonoBehaviour
             {
                 if (resource == playerResource.resource)
                 {
+                    //Add it to player amount
                     playerResource.Amount += amount;
 
+                    if(resource.yieldType==YieldType.Science)
+                        TechManager.instance.UpdateCurrentTechByAmount(amount);
+
+                    //Trigger event when changing amount
+                    EventManager.TriggerEvent(resource.name.ToString());
+
                     //Popup
-                    Popup newPopup = Instantiate(popup, building.position, Quaternion.identity, building);
+                    Popup newPopup = Instantiate(popup, source.position, Quaternion.identity, source);
                     newPopup.text.text = "+" + amount;
                     newPopup.text.color = resource.color;
                     newPopup.spriteRenderer.sprite = resource.popupSprite;
@@ -53,6 +60,8 @@ public class ResourceSystem : MonoBehaviour
         }
     }
 
+
+
     public void YieldPerDay(Resource resource, float change)
     {
         foreach (PlayerResource playerResource in player.resources)
@@ -65,4 +74,15 @@ public class ResourceSystem : MonoBehaviour
         }
     }
 
+    public PlayerResource FindPlayerResource(Resource resource)
+    {
+        foreach (PlayerResource playerResource in player.resources)
+        {
+            if (resource == playerResource.resource)
+            {
+                return playerResource;
+            }
+        }
+        return null;
+    }
 }
