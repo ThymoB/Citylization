@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Household : Building
 {
+    [Header("Residents")]
     public int residents;
+    public int maxResidents;
 
 
 }

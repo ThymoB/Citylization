@@ -14,6 +14,7 @@ public class ResourceSystem : MonoBehaviour
     public LayerMask householdMask;
     public float rangeHeight = 2f;
     public GameObject showRangeObject;
+    public Color loseResourceColor;
 
     private void Awake()
     {
@@ -60,6 +61,37 @@ public class ResourceSystem : MonoBehaviour
         }
     }
 
+    public void RemoveFromPlayer(Resource resource, float amount, Transform source, float speed)
+    {
+        if (amount > 0)
+        {
+            foreach (PlayerResource playerResource in player.resources)
+            {
+                if (resource == playerResource.resource)
+                {
+                    //Add it to player amount
+                    playerResource.Amount -= amount;
+
+                    if (resource.yieldType == YieldType.Science)
+                        TechManager.instance.UpdateCurrentTechByAmount(amount);
+
+                    //Trigger event when changing amount
+                    EventManager.TriggerEvent(resource.name.ToString());
+
+                    //Popup
+                    Popup newPopup = Instantiate(popup, source.position, Quaternion.identity, source);
+                    newPopup.text.text = "-" + amount;
+                    newPopup.text.color = loseResourceColor;
+                    newPopup.spriteRenderer.sprite = resource.popupSprite;
+                    newPopup.animator.Play("PopupUse");
+                    newPopup.animator.speed = Mathf.Pow(speed, popupSpeed);
+                    Destroy(newPopup.gameObject, 1 / Mathf.Pow(speed, popupSpeed));
+
+                    break;
+                }
+            }
+        }
+    }
 
 
     public void YieldPerDay(Resource resource, float change)

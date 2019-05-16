@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7304773006055931292}
   - component: {fileID: 7304773006055931295}
   - component: {fileID: 7304773006055931293}
-  - component: {fileID: 7304773006055931290}
   - component: {fileID: 987981055367886343}
   - component: {fileID: 2932237071825397720}
+  - component: {fileID: 6429351557566368485}
   m_Layer: 0
   m_Name: Governor's Hut
   m_TagString: Untagged
@@ -49,20 +49,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
+  models:
+  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
   abilities:
   - {fileID: 2215413927009473708, guid: 676ccd6cbd2241940a2971db3676f993, type: 3}
-  resourceYields:
-  - {fileID: 7304773006055931293}
-  - {fileID: 7304773006055931290}
-  globalEffectiveRange: 1
-  effectiveRange: 0
-  showRange: 0
-  popInRange: 0
+  openAllDay: 0
   openTime: 8
   closeTime: 20
   operating: 0
-  models:
-  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+  resourceYields:
+  - {fileID: 7304773006055931293}
+  - {fileID: 6429351557566368485}
 --- !u!114 &7304773006055931293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,91 +73,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource: {fileID: 11400000, guid: 9b0b73cfb5e851f4db676a2d06e2bdfa, type: 2}
-  amount: 5
+  dailyAmount: 2
   useRandomInterval: 0
-  active: 0
-  useAmountPerHousehold: 0
-  amountPerHousehold: 1
-  estimateYield: 0
-  yieldPerHour: 0
-  yieldPerDay: 0
-  totalYieldPerDay:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  change: 0
-  useCapacity: 0
-  capacity: 0
---- !u!114 &7304773006055931290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7304773006055931294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
-  amount: 1
-  useRandomInterval: 0
-  active: 0
-  useAmountPerHousehold: 0
-  amountPerHousehold: 1
-  estimateYield: 0
-  yieldPerHour: 0
-  yieldPerDay: 0
-  totalYieldPerDay:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  change: 0
-  useCapacity: 0
-  capacity: 0
+  useFixedDailyYield: 0
+  fixedDailyYieldTime: 0
+  getBuildingOperatingTime: 1
+  building: {fileID: 7304773006055931295}
+  yieldCounter: {fileID: 0}
+  range: {fileID: 0}
+  useDailyCapacity: 0
+  dailyCapacity: 0
 --- !u!114 &987981055367886343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +111,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Primal Government building
+  description: Primal Government building, grants Sway and Science per day
+--- !u!114 &6429351557566368485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304773006055931294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
+  dailyAmount: 1
+  useRandomInterval: 0
+  useFixedDailyYield: 1
+  fixedDailyYieldTime: 15
+  getBuildingOperatingTime: 0
+  building: {fileID: 0}
+  yieldCounter: {fileID: 0}
+  range: {fileID: 0}
+  useDailyCapacity: 0
+  dailyCapacity: 0
 --- !u!1001 &7304773006633339829
 PrefabInstance:
   m_ObjectHideFlags: 0

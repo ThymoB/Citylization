@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerResource.cs" />
+    <Compile Include="Assets\Scripts\PopYieldCounter.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\ResourceCost.cs" />
     <Compile Include="Assets\Scripts\ResourceSystem.cs" />
@@ -96,11 +97,13 @@
     <Compile Include="Assets\Scripts\Technology.cs" />
     <Compile Include="Assets\Scripts\TimeGetter.cs" />
     <Compile Include="Assets\Scripts\TimeSystem.cs" />
+    <Compile Include="Assets\Scripts\YieldCounter.cs" />
     <Compile Include="Assets\TechManager.cs" />
     <Compile Include="Assets\TechnologyButton.cs" />
     <Compile Include="Assets\UIResources.cs" />
     <Compile Include="Assets\UIUnlockable.cs" />
     <Compile Include="Assets\Unlockable.cs" />
+    <Compile Include="Assets\UseResource.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

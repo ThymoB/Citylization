@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class PopManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static PopManager instance;
+    public int totalPop;
+    public GameObject householdsParent;
+
+    private void Awake()
     {
-        
+        //Check if instance already exists
+        if (instance == null)
+
+            //if not, set instance to this
+            instance = this;
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    //For testing, now count pop at start
+    private void Start()
     {
-        
+        RecountAllPop();
+    }
+
+    public void RecountAllPop()
+    {
+        totalPop = 0;
+        Household[] households = householdsParent.GetComponentsInChildren<Household>();
+
+        foreach (Household household in households)
+        {
+            totalPop += household.residents;
+        }
+
     }
 }

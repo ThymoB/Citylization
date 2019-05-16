@@ -6,6 +6,4 @@ public class Range : MonoBehaviour
 {
     public float effectiveRange;
     public bool showRange;
-    public float popInRange;
-
 }

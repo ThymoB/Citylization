@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//summary
-//If
+public enum GrantOrUseResource { Grant, Use }
 
 public class ResourceYield : MonoBehaviour
 {
@@ -12,19 +11,18 @@ public class ResourceYield : MonoBehaviour
     public Resource resource;
     public float dailyAmount;
     public bool useRandomInterval;
+    public GrantOrUseResource grantOrUseResource;
 
     [Header("Daily Yield")]
     public bool useFixedDailyYield;
     public int fixedDailyYieldTime;
 
     [Header("Building")]
-    public GeneratingBuilding building;
+    public bool getBuildingOperatingTime;
+    public Building building;
 
     [Header("Household")]
-    public bool useAmountPerHousehold;
-    public LayerMask popType;
-    public float amountPerHousehold = 1f;
-    public float estimateYield;
+    public YieldCounter yieldCounter;
 
     [Header("Range")]
     public Range range;
@@ -44,6 +42,15 @@ public class ResourceYield : MonoBehaviour
     private void Awake()
     {
         timeListener = new UnityAction(EachHour);
+
+    }
+
+    //For now, start operating if there is no building
+    private void Start()
+    {
+        if (!getBuildingOperatingTime)
+            StartOperating();
+        
     }
 
     private void OnEnable()
@@ -96,27 +103,6 @@ public class ResourceYield : MonoBehaviour
     }
 
 
-    //Gather all objects with the layermask, like households
-    public void GatherPopInRange()
-    {
-        range.popInRange = 0;
-        Collider[] foundHouseholds = Physics.OverlapCapsule(transform.position + new Vector3(0, -ResourceSystem.instance.rangeHeight), transform.position + new Vector3(0, ResourceSystem.instance.rangeHeight), range.effectiveRange, popType);
-        //Households
-        if (popType == ResourceSystem.instance.householdMask)
-        {
-            foreach (Collider collider in foundHouseholds)
-            {
-                Household household = collider.GetComponentInParent<Household>();
-                range.popInRange += household.residents;
-            }
-
-            if (useAmountPerHousehold)
-                estimateYield = dailyAmount * amountPerHousehold * range.popInRange;
-            else
-                estimateYield = dailyAmount;
-        }
-    }
-
     public void GiveResource()
     {
         if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
@@ -124,6 +110,16 @@ public class ResourceYield : MonoBehaviour
             yieldPerHour+=dailyAmount;
             ResourceSystem.instance.AddToPlayer(resource, dailyAmount, transform, 1/dailyAmount);
         }
+    }
+
+    public void UseResource()
+    {
+        if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
+        {
+            yieldPerHour -= dailyAmount;
+            ResourceSystem.instance.RemoveFromPlayer(resource, dailyAmount, transform, 1 / dailyAmount);
+        }
+
     }
 
     //Give resources with intervals
@@ -135,10 +131,20 @@ public class ResourceYield : MonoBehaviour
             delay -= (Time.deltaTime * TimeSystem.instance.gameSpeed);
             if (delay <= 0)
             {
-                if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
+                //Grant resource
+                if (grantOrUseResource == GrantOrUseResource.Grant)
                 {
-                    yieldPerHour++;
-                    ResourceSystem.instance.AddToPlayer(resource, 1f, transform, dailyAmount);
+                    if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
+                    {
+                        yieldPerHour++;
+                        ResourceSystem.instance.AddToPlayer(resource, 1f, transform, dailyAmount);
+                    }
+                }
+                //Use Resource
+                else if (grantOrUseResource==GrantOrUseResource.Use)
+                {
+                    yieldPerHour--;
+                    ResourceSystem.instance.RemoveFromPlayer(resource, 1f, transform, dailyAmount);
                 }
                 delay = CalculateDelay();
             }
@@ -147,19 +153,26 @@ public class ResourceYield : MonoBehaviour
     }
 
 
+
     //Calculate the delay based on the daily amount
     public float CalculateDelay()
     {
         float time;
         //Use building opening times if there is a building attached
-        if (building != null) time = building.closeTime - building.openTime;
+        if (building != null && getBuildingOperatingTime)
+            if (!building.openAllDay)
+                time = building.closeTime - building.openTime;
+            else time = 24;
         //Otherwise calculate for a day
         else time = 24;
-        float amount = dailyAmount;
-        if (useAmountPerHousehold)
-            amount = estimateYield;
+
+
+        //Use yieldcounter amount if it has one
+        if (yieldCounter != null)
+            dailyAmount = yieldCounter.YieldAmount();
+
         //The delay is the time divided by the (estimated) daily yield 
-        float delay = (time / amount);
+        float delay = (time / dailyAmount);
         //If it used variance, apply it here
         if (useRandomInterval)
             delay = delay * Random.Range(1 - ResourceSystem.instance.intervalVariance, 1 + ResourceSystem.instance.intervalVariance);
@@ -169,13 +182,15 @@ public class ResourceYield : MonoBehaviour
 
     public void EachHour()
     {
-        //Gather range if it has one
-        if (range != null)
-            GatherPopInRange();
         //Give fixed time yield
         if (useFixedDailyYield)
             if (fixedDailyYieldTime == TimeSystem.instance.curHour)
-                GiveResource();
+            {
+                if (grantOrUseResource == GrantOrUseResource.Grant)
+                    GiveResource();
+                else if (grantOrUseResource == GrantOrUseResource.Use)
+                    UseResource();
+            }
         CalculateHourlyYield();
     }
 

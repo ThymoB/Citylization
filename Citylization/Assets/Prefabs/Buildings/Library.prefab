@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2997335699254945501}
   - component: {fileID: -2947134293249751022}
   - component: {fileID: 7480977593516313668}
+  - component: {fileID: 6248013365001267321}
   m_Layer: 0
   m_Name: Library
   m_TagString: Untagged
@@ -76,12 +77,7 @@ MonoBehaviour:
   useFixedDailyYield: 0
   fixedDailyYieldTime: 0
   building: {fileID: 1858614317551625873}
-  useAmountPerHousehold: 0
-  popType:
-    serializedVersion: 2
-    m_Bits: 256
-  amountPerHousehold: 2
-  estimateYield: 0
+  yieldCounter: {fileID: 6248013365001267321}
   range: {fileID: 0}
   useDailyCapacity: 0
   dailyCapacity: 10
@@ -99,7 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectiveRange: 30
   showRange: 0
-  popInRange: 0
 --- !u!114 &-2947134293249751022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +124,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: A Library
+--- !u!114 &6248013365001267321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858614317551625878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0358f7dbaddb6184ea7b914c933c3801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: {fileID: 2997335699254945501}
+  multiplier: 2
 --- !u!1 &3386024727513488149
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 6134359838356149886}
   - component: {fileID: 5887775813337426641}
   - component: {fileID: 138669900454346041}
+  - component: {fileID: 1452620005565125667}
+  - component: {fileID: 4498554533791859355}
+  - component: {fileID: 5958532341142893860}
+  - component: {fileID: 2232228029768318449}
   m_Layer: 8
   m_Name: Hut House
   m_TagString: Household
@@ -49,7 +53,15 @@ MonoBehaviour:
   canBePickedUp: 0
   models: []
   abilities: []
-  residents: 3
+  openAllDay: 0
+  openTime: 8
+  closeTime: 18
+  operating: 0
+  resourceYields:
+  - {fileID: 4498554533791859355}
+  resourcesUsed: []
+  residents: 1
+  maxResidents: 1
 --- !u!114 &5887775813337426641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +90,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A small hut housing citizens.
+  description: A small hut housing Pop. Grants Science per Pop.
+--- !u!114 &1452620005565125667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0358f7dbaddb6184ea7b914c933c3801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldCountRange: 1
+  range: {fileID: 0}
+  multiplier: 0.05
+  forcePopToBuilding: 0
+--- !u!114 &4498554533791859355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
+  dailyAmount: 0
+  useRandomInterval: 1
+  grantOrUseResource: 0
+  useFixedDailyYield: 0
+  fixedDailyYieldTime: 0
+  getBuildingOperatingTime: 0
+  building: {fileID: 0}
+  yieldCounter: {fileID: 1452620005565125667}
+  range: {fileID: 0}
+  useDailyCapacity: 0
+  dailyCapacity: 0
+--- !u!114 &5958532341142893860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532bda6d51058c64088481e2959a4dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resource: {fileID: 11400000, guid: 59040e78eee3c8e419ec8cef3033395e, type: 2}
+  dailyAmount: 0
+  useRandomInterval: 1
+  grantOrUseResource: 1
+  useFixedDailyYield: 0
+  fixedDailyYieldTime: 0
+  getBuildingOperatingTime: 0
+  building: {fileID: 0}
+  yieldCounter: {fileID: 2232228029768318449}
+  range: {fileID: 0}
+  useDailyCapacity: 0
+  dailyCapacity: 0
+--- !u!114 &2232228029768318449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0358f7dbaddb6184ea7b914c933c3801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldCountRange: 1
+  range: {fileID: 0}
+  multiplier: 0.5
+  forcePopToBuilding: 0
 --- !u!1 &7068139677682952166
 GameObject:
   m_ObjectHideFlags: 0
