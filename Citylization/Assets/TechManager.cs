@@ -57,33 +57,34 @@ public class TechManager : MonoBehaviour
         //If instance already exists and it's not this:
         else if (instance != this)
             Destroy(gameObject);
-    }
-
-    private void Start()
-    {
         AddAllTechs();
     }
 
     public void AddAllTechs()
     {
+        //Add all techs to the Tech Manager with initial science values
         foreach (Technology tech in allTechnologies)
         {
             if (Player.instance.learnedTechnologies.Contains(tech))
-                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Completed));
+                technologyProgress.Add(tech, new TechInfo(tech.costToResearch, tech.costToResearch, TechStatus.Completed));
             else if (CanLearnTech(tech))
-                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Available));
+            {
+                technologyProgress.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Available));
+                availableTechnologies.Add(tech);
+            }
             else
-                technologyProgress.Add(tech, new TechInfo(0f, TechStatus.Unavailable));
+                technologyProgress.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Unavailable));
         }
     }
 
     public bool CanLearnTech(Technology technology)
     {
-
-        if (!technology.requiredTechs.Contains(technology))
-            return false;
-        
-
+        foreach (Technology requiredTech in technology.requiredTechs)
+        {
+            //If the player doesn't have any of the techs, return false
+            if (!Player.instance.learnedTechnologies.Contains(requiredTech))
+                return false;
+        }
         return true;
     }
 
@@ -107,11 +108,36 @@ public class TechManager : MonoBehaviour
         currentlyResearching = null;
     }
 
+    //Add all floating science to the technology
     public void AddFloatingToTech()
     {
         technologyProgress[currentlyResearching].progress += floatingScience;
         floatingScience = 0;
     }
 
+    //Switch from one tech to another when clicking on the tech tree for example
+    public void SwitchTechs(Technology technology)
+    {
+        if (technologyProgress[technology].techStatus == TechStatus.Available)
+        {
 
+
+            currentlyResearching = technology;
+            technologyProgress[currentlyResearching].techStatus = TechStatus.Researching;
+            AddFloatingToTech();
+        }
+        /*
+        if (technologyProgress[technology].techStatus == TechStatus.Available)
+        {
+            //Switch current researching
+            if (technologyProgress[currentlyResearching].techStatus == TechStatus.Researching)
+                technologyProgress[currentlyResearching].techStatus = TechStatus.Available;
+            
+
+            currentlyResearching = technology;
+            technologyProgress[technology].techStatus = TechStatus.Researching;
+            AddFloatingToTech();
+        }
+        */
+    }
 }

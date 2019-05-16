@@ -11,6 +11,12 @@ public class TechnologyButton : MonoBehaviour
     public TextMeshProUGUI nameText;
     public Image icon;
     public ResearchProgress progress;
+    [Header("Button")]
+    public Image button;
+    public Color buttonAvailableColor;
+    public Color buttonCompletedColor;
+    public Color buttonResearchingColor;
+    public Color buttonUnavailableColor;
 
     [Header("Outline")]
     public Outline outline;
@@ -19,7 +25,7 @@ public class TechnologyButton : MonoBehaviour
     public Color researchingColor;
     public Color unavailableColor;
 
-    private void Awake()
+    private void Start()
     {
         for (int i = 0; i < unlockablePreview.Length; i++)
         {
@@ -28,9 +34,9 @@ public class TechnologyButton : MonoBehaviour
             else
                 unlockablePreview[i].icon.sprite = technology.unlocks[i].iconOnTechTree;
         }
-        progress.technology = technology;
         nameText.text = technology.name;
         icon.sprite = technology.icon;
+        UpdateColors();
     }
 
     private void OnEnable()
@@ -45,49 +51,40 @@ public class TechnologyButton : MonoBehaviour
         
     }
 
-    public void Researching()
-    {
-
-    }
-
-    public void Completed()
-    {
-
-    }
-
-    public void Unavailable()
-    {
-
-    }
-
+    //When clicking on a button to research
     public void SelectTech()
     {
-        if (TechManager.instance.technologyProgress[technology].techStatus==TechStatus.Available)
-        {
-            TechManager.instance.currentlyResearching = technology;
-            TechManager.instance.AddFloatingToTech();
-        }
+        TechManager.instance.SwitchTechs(technology);
+        UpdateColors();
+        
     }
 
-    private void Update()
+    public void UpdateColors()
     {
         switch (TechManager.instance.technologyProgress[technology].techStatus)
         {
             case TechStatus.Unavailable:
                 outline.effectColor = unavailableColor;
+                button.color = buttonUnavailableColor;
                 break;
 
             case TechStatus.Available:
                 outline.effectColor = availableColor;
+                button.color = buttonAvailableColor;
                 break;
 
             case TechStatus.Researching:
                 outline.effectColor = researchingColor;
+                button.color = buttonResearchingColor;
                 break;
 
             case TechStatus.Completed:
                 outline.effectColor = completedColor;
+                button.color = buttonCompletedColor;
                 break;
         }
+
     }
+
+
 }

@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -358,6 +358,11 @@ MonoBehaviour:
   nameText: {fileID: 8047758343516711227}
   icon: {fileID: 4901392900154850736}
   progress: {fileID: 8736992627176784486}
+  button: {fileID: 4600290371304121389}
+  buttonAvailableColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
+  buttonCompletedColor: {r: 0.7842768, g: 1, b: 0.7688679, a: 1}
+  buttonResearchingColor: {r: 0.514151, g: 0.71230114, b: 1, a: 1}
+  buttonUnavailableColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   outline: {fileID: 3664284298536865265}
   availableColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0.49803922}
   completedColor: {r: 0.066497564, g: 1, b: 0, a: 0.5}
@@ -375,9 +380,9 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0.4082811, b: 1, a: 0.5}
-  m_EffectDistance: {x: 10, y: -10}
-  m_UseGraphicAlpha: 1
+  m_EffectColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 0.49803922}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 0
 --- !u!1 &2705638331163579627
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74f174166fefae418d8ac07821dccef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  technology: {fileID: 0}
+  technologyButton: {fileID: -3809780358480250310}
   blueBar: {fileID: 6239742873774174998}
   numbers: {fileID: 5230771958531910500}
 --- !u!1 &5471893502108421103

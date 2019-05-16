@@ -8,7 +8,7 @@ public class ResearchProgress : MonoBehaviour
 {
     private UnityAction scienceListener;
 
-    public Technology technology;
+    public TechnologyButton technologyButton;
     public RectTransform blueBar;
     public TextMeshProUGUI numbers;
 
@@ -30,19 +30,26 @@ public class ResearchProgress : MonoBehaviour
 
     private void Start()
     {
-
+        OnOpenPanel();
     }
 
+
+    //When opening the tech tree
     public void OnOpenPanel()
     {
         UpdateProgress();
     }
 
+    //Every time science comes in or a tech is completed, update the progress
     public void UpdateProgress()
     {
-        TechManager.instance.technologyProgress.TryGetValue(technology, out TechInfo techInfo);
-        blueBar.localScale = new Vector3(techInfo.progress / technology.costToResearch, 1f, 1f);
-        numbers.text = techInfo.progress.ToString() + "/" + technology.costToResearch.ToString();
+        if (TechManager.instance.technologyProgress.TryGetValue(technologyButton.technology, out TechInfo techInfo))
+        {
+            blueBar.localScale = new Vector3(techInfo.progress / techInfo.scienceNeeded, 1f, 1f);
+            numbers.text = techInfo.progress.ToString() + "/" + techInfo.scienceNeeded.ToString();
+            
+        }
+        technologyButton.UpdateColors();
     }
 
 }
