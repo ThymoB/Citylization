@@ -5,6 +5,10 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public bool canBePickedUp = false;
-    public List<Ability> abilities;
 
+    [Header("Models")]
+    public List<GameObject> models;
+
+    [Header("Abilities")]
+    public List<Ability> abilities;
 }

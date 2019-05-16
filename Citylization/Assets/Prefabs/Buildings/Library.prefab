@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1858614317551625879}
   - component: {fileID: 1858614317551625873}
   - component: {fileID: 1858614317551625872}
-  - component: {fileID: 7480977593516313668}
+  - component: {fileID: 2997335699254945501}
   - component: {fileID: -2947134293249751022}
+  - component: {fileID: 7480977593516313668}
   m_Layer: 0
   m_Name: Library
   m_TagString: Untagged
@@ -48,18 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
+  models:
+  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
   abilities: []
   resourceYields:
   - {fileID: 1858614317551625872}
-  globalEffectiveRange: 0
-  effectiveRange: 30
-  showRange: 0
-  popInRange: 0
+  openAllDay: 0
   openTime: 7
   closeTime: 20
   operating: 0
-  models:
-  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
 --- !u!114 &1858614317551625872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,43 +71,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
-  amount: 1
+  dailyAmount: 10
   useRandomInterval: 1
-  active: 0
-  useAmountPerHousehold: 1
+  useFixedDailyYield: 0
+  fixedDailyYieldTime: 0
+  building: {fileID: 1858614317551625873}
+  useAmountPerHousehold: 0
+  popType:
+    serializedVersion: 2
+    m_Bits: 256
   amountPerHousehold: 2
   estimateYield: 0
-  yieldPerHour: 0
-  yieldPerDay: 0
-  totalYieldPerDay:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  change: 0
-  useCapacity: 0
-  capacity: 10
---- !u!114 &7480977593516313668
+  range: {fileID: 0}
+  useDailyCapacity: 0
+  dailyCapacity: 10
+--- !u!114 &2997335699254945501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1858614317551625878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e5adc73bb0af55479e7f5487e36c370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A Library
+  effectiveRange: 30
+  showRange: 0
+  popInRange: 0
 --- !u!114 &-2947134293249751022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +116,19 @@ MonoBehaviour:
   isUnlocked: 0
   unlockableType: 0
   obsolete: {fileID: 0}
+--- !u!114 &7480977593516313668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858614317551625878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: A Library
 --- !u!1 &3386024727513488149
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,6 +55,7 @@ public class TechnologyButton : MonoBehaviour
     public void SelectTech()
     {
         TechManager.instance.SwitchTechs(technology);
+        progress.UpdateProgress();
         UpdateColors();
         
     }

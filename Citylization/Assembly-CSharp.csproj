@@ -69,6 +69,7 @@
     <Compile Include="Assets\KeyCommands.cs" />
     <Compile Include="Assets\PopManager.cs" />
     <Compile Include="Assets\Popup.cs" />
+    <Compile Include="Assets\Range.cs" />
     <Compile Include="Assets\ResearchProgress.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />

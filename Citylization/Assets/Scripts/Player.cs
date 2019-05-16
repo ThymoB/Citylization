@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     public List<PlayerResource> resources;
     public List<Technology> learnedTechnologies;
-
+    public GameObject techTree;
 
     private void Awake()
     {
