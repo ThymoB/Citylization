@@ -49,8 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
+  needsToBeRoadside: 1
+  size: {x: 3, y: 3}
+  purchaseCosts: []
   models:
   - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+  selectedModel: {fileID: 0}
   abilities:
   - {fileID: 2215413927009473708, guid: 676ccd6cbd2241940a2971db3676f993, type: 3}
   openAllDay: 0
@@ -60,6 +64,7 @@ MonoBehaviour:
   resourceYields:
   - {fileID: 7304773006055931293}
   - {fileID: 6429351557566368485}
+  resourcesUsed: []
 --- !u!114 &7304773006055931293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +80,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 9b0b73cfb5e851f4db676a2d06e2bdfa, type: 2}
   dailyAmount: 2
   useRandomInterval: 0
+  grantOrUseResource: 0
   useFixedDailyYield: 0
   fixedDailyYieldTime: 0
   getBuildingOperatingTime: 1
@@ -96,9 +102,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: c1b387eb94cb50e4982ea96f9df31386, type: 3}
-  isUnlocked: 0
-  unlockableType: 0
+  iconOnMenu: {fileID: 0}
+  type: 0
+  menuCategory: 7
   obsolete: {fileID: 0}
+  useMaxAmount: 0
+  maxAmount: 0
 --- !u!114 &2932237071825397720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +136,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
   dailyAmount: 1
   useRandomInterval: 0
+  grantOrUseResource: 0
   useFixedDailyYield: 1
   fixedDailyYieldTime: 15
   getBuildingOperatingTime: 0
@@ -146,6 +156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Town Hall test model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
         type: 3}

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum UnlockableType { Building, Zone, Road, Ability, Bonus }
+public enum UnlockableMenuCategory { Roads, Residential, Commercial, Industrial, Scientific, Cultural, Economic, Governmental, Health, Service, Protection }
 
 [RequireComponent(typeof(Description))]
 public class Unlockable : MonoBehaviour
 {
     public Sprite iconOnTechTree;
-    public bool isUnlocked = false;
-    public UnlockableType unlockableType;
+    public Sprite iconOnMenu;
+    public UnlockableType type;
+    public UnlockableMenuCategory menuCategory;
     public Technology obsolete;
+    public bool useMaxAmount;
+    public int maxAmount;
 }

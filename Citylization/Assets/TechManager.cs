@@ -100,12 +100,20 @@ public class TechManager : MonoBehaviour
         else floatingScience += amount;
     }
 
+    public void AwardTechToPlayer(Technology technology)
+    {
+        Player.instance.learnedTechnologies.Add(technology);
+        lastCompleted = technology;
+        technologyProgress[lastCompleted].techStatus = TechStatus.Completed;
+        UnlockManager.instance.UnlockFromTech(technology);
+        if (technology == currentlyResearching)
+            currentlyResearching = null;
+    }
+
+
     public void AwardCurrentTechToPlayer()
     {
-        Player.instance.learnedTechnologies.Add(currentlyResearching);
-        lastCompleted = currentlyResearching;
-        technologyProgress[lastCompleted].techStatus = TechStatus.Completed;
-        currentlyResearching = null;
+        AwardTechToPlayer(currentlyResearching);
     }
 
     //Add all floating science to the technology

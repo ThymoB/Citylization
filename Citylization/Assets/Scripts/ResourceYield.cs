@@ -45,13 +45,7 @@ public class ResourceYield : MonoBehaviour
 
     }
 
-    //For now, start operating if there is no building
-    private void Start()
-    {
-        if (!getBuildingOperatingTime)
-            StartOperating();
-        
-    }
+
 
     private void OnEnable()
     {
@@ -182,15 +176,18 @@ public class ResourceYield : MonoBehaviour
 
     public void EachHour()
     {
-        //Give fixed time yield
-        if (useFixedDailyYield)
-            if (fixedDailyYieldTime == TimeSystem.instance.curHour)
-            {
-                if (grantOrUseResource == GrantOrUseResource.Grant)
-                    GiveResource();
-                else if (grantOrUseResource == GrantOrUseResource.Use)
-                    UseResource();
-            }
+        if (active)
+        {
+            //Give fixed time yield
+            if (useFixedDailyYield)
+                if (fixedDailyYieldTime == TimeSystem.instance.curHour)
+                {
+                    if (grantOrUseResource == GrantOrUseResource.Grant)
+                        GiveResource();
+                    else if (grantOrUseResource == GrantOrUseResource.Use)
+                        UseResource();
+                }
+        }
         CalculateHourlyYield();
     }
 

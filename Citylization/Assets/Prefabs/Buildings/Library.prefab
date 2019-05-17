@@ -50,15 +50,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
+  needsToBeRoadside: 1
+  size: {x: 3, y: 3}
   models:
   - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
   abilities: []
-  resourceYields:
-  - {fileID: 1858614317551625872}
   openAllDay: 0
   openTime: 7
   closeTime: 20
   operating: 0
+  resourceYields:
+  - {fileID: 1858614317551625872}
+  resourcesUsed: []
 --- !u!114 &1858614317551625872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +77,10 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 31c4929c8cffa1049b211f15b814aef9, type: 2}
   dailyAmount: 10
   useRandomInterval: 1
+  grantOrUseResource: 0
   useFixedDailyYield: 0
   fixedDailyYieldTime: 0
+  getBuildingOperatingTime: 0
   building: {fileID: 1858614317551625873}
   yieldCounter: {fileID: 6248013365001267321}
   range: {fileID: 0}
@@ -108,8 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: 79cd9d00147ceed4aa5794bac8165530, type: 3}
-  isUnlocked: 0
-  unlockableType: 0
+  iconOnMenu: {fileID: 0}
+  type: 0
+  menuCategory: 7
   obsolete: {fileID: 0}
 --- !u!114 &7480977593516313668
 MonoBehaviour:
@@ -136,8 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0358f7dbaddb6184ea7b914c933c3801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yieldCountRange: 0
   range: {fileID: 2997335699254945501}
   multiplier: 2
+  forcePopToBuilding: 0
 --- !u!1 &3386024727513488149
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,15 @@ using UnityEngine.Events;
 public class Building : MonoBehaviour
 {
     public bool canBePickedUp = false;
+    public bool needsToBeRoadside = true;
+    public Vector2 size = new Vector2(3f,3f);
+    [SerializeField]
+    public List<ResourceCost> purchaseCosts = new List<ResourceCost>();
+        
 
     [Header("Models")]
     public List<GameObject> models;
+    public GameObject selectedModel;
 
     [Header("Abilities")]
     public List<Ability> abilities;
@@ -46,10 +52,7 @@ public class Building : MonoBehaviour
         //PickUpBuilding();
     }
 
-    private void Start()
-    {
-        PlaceDownBuilding();
-    }
+
 
     //When putting down the building
     public void PlaceDownBuilding()

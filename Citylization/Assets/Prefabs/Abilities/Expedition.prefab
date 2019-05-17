@@ -60,8 +60,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: b6d1c934ddb36004ebd2d11e9097c9b9, type: 3}
-  isUnlocked: 0
-  unlockableType: 3
+  iconOnMenu: {fileID: 0}
+  type: 3
+  menuCategory: 7
   obsolete: {fileID: 0}
 --- !u!114 &2215413927009473708
 MonoBehaviour:

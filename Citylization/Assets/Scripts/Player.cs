@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     public List<Technology> learnedTechnologies;
     public GameObject techTree;
 
+    public Unlockable selectedUnlockable;
+
+    public MouseBehaviour mouseBehaviour;
+
     private void Awake()
     {
         //Check if instance already exists
@@ -21,6 +25,19 @@ public class Player : MonoBehaviour
         //If instance already exists and it's not this:
         else if (instance != this)
             Destroy(gameObject);
+    }
+
+    public void SelectUnlockable(Unlockable unlockable)
+    {
+
+        selectedUnlockable = unlockable;
+        mouseBehaviour.StartCarrying();
+
+    }
+
+    public void DeselectUnlockable()
+    {
+        mouseBehaviour.StopCarrying();
     }
 
 }
