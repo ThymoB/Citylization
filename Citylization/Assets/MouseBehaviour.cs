@@ -2,55 +2,127 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MouseMode { Free, CarryingBuilding, PreselectingRoad, PuttingDownRoad }
+
 public class MouseBehaviour : MonoBehaviour
 {
     public UnlockableType unlockableType;
     public Building building;
-    public bool isCarrying;
+    public Road road;
+    public Unlockable selectedUnlockable;
+    public MouseMode mode = MouseMode.Free;
+    public LayerMask terrainLayer;
+    public RoadPlacer roadPlacer;
 
     public RaycastHit hit;
     public Ray ray;
+    public Vector3 mousePosition;
 
-    public void StartCarrying()
+    //Select tool based on unlockable
+    public void SelectUnlockable(Unlockable unlockable)
     {
-        unlockableType = Player.instance.selectedUnlockable.type;
-        if (unlockableType == UnlockableType.Building)
+        selectedUnlockable = unlockable;
+        unlockableType = selectedUnlockable.type;
+        switch(unlockableType)
         {
-            //Pick a random model, that one will be put down
-            building = Instantiate(Player.instance.selectedUnlockable.GetComponent<Building>());
-            building.selectedModel = Instantiate(building.models[Random.Range(0, building.models.Count - 1)], building.transform);
 
-            isCarrying = true;
+            case UnlockableType.Building:
+                StartCarryingBuilding();
+                break;
+
+            case UnlockableType.Road:
+                StartPlacingRoad();
+                break;
+
         }
-        
+
     }
+
+
+
+    public void StartCarryingBuilding()
+    {
+        //Pick a random model, that one will be put down
+        building = Instantiate(selectedUnlockable.GetComponent<Building>());
+        building.selectedModel = Instantiate(building.models[Random.Range(0, building.models.Count - 1)], building.transform);
+        mode = MouseMode.CarryingBuilding;
+    }
+
+    public void StartPlacingRoad()
+    {
+        road = selectedUnlockable.GetComponent<Road>();
+        mode = MouseMode.PreselectingRoad;
+
+    }
+
 
     private void LateUpdate()
     {
-        if (isCarrying)
+        if (GetMousePosition())
         {
-            MoveBuilding();
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            switch (mode)
             {
-                if (BuildingCanBePutDown())
-                {
-                    PutDownBuilding();
-                }
+                //Carrying Building
+                case MouseMode.CarryingBuilding:
+                    MoveBuilding();
+                    break;
+
+                //Creating a road
+                case MouseMode.PreselectingRoad:
+                    
+                    if(Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        if (roadPlacer.IsValid(mousePosition))
+                        {
+                            roadPlacer.SetBeginPoint(mousePosition, road);
+                            mode = MouseMode.PuttingDownRoad;
+                        }
+                    }
+                    break;
+
+                case MouseMode.PuttingDownRoad:
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        if (roadPlacer.IsValid(mousePosition))
+                        {
+                            roadPlacer.SetEndPoint(mousePosition);
+                            mode = MouseMode.Free;
+                        }
+                    }
+                    break;
+
+            }
+
+        }
+    }
+
+
+    public void MoveBuilding()
+    {
+        building.transform.position = mousePosition;
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (BuildingCanBePutDown())
+            {
+                PutDownBuilding();
             }
         }
     }
 
-    public void MoveBuilding()
-    {
+
+
+    public bool GetMousePosition()
+    { 
         //Mouse cursor
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, terrainLayer))
         {
-            building.transform.position = hit.point;
-
-
+            mousePosition = hit.point;
+            return true;
         }
+        return false;
     }
+
 
     public bool BuildingCanBePutDown()
     {
@@ -66,6 +138,7 @@ public class MouseBehaviour : MonoBehaviour
 
     public void StopCarrying()
     {
-        isCarrying = false;
+        building = null;
+        mode = MouseMode.Free;
     }
 }

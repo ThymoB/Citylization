@@ -20,7 +20,7 @@ public class UnlockablePicker : MonoBehaviour
     {
         if (status==UnlockStatus.Unlocked)
         {
-            Player.instance.SelectUnlockable(unlockable);
+            Player.instance.mouseBehaviour.SelectUnlockable(unlockable);
         }
         else
         {

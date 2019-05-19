@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public List<Technology> learnedTechnologies;
     public GameObject techTree;
 
-    public Unlockable selectedUnlockable;
+
 
     public MouseBehaviour mouseBehaviour;
 
@@ -27,13 +27,6 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void SelectUnlockable(Unlockable unlockable)
-    {
-
-        selectedUnlockable = unlockable;
-        mouseBehaviour.StartCarrying();
-
-    }
 
     public void DeselectUnlockable()
     {
