@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class TechManager : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class TechManager : MonoBehaviour
     public Technology currentlyResearching;
     public Technology lastCompleted;
     public float floatingScience;
+    public TechTree techTree;
 
     public List<Technology> allTechnologies;
     public List<Technology> availableTechnologies;
 
     public Dictionary<Technology, TechInfo> technologyProgress = new Dictionary<Technology, TechInfo>();
+
 
     [SerializeField]
     private int totalNumberOfTechs;
@@ -62,6 +65,8 @@ public class TechManager : MonoBehaviour
 
     public void AddAllTechs()
     {
+        //Look in the Assets/Technologies folder for techs and add them to the list of techs
+        CollectTechs();
         //Add all techs to the Tech Manager with initial science values
         foreach (Technology tech in allTechnologies)
         {
@@ -74,6 +79,21 @@ public class TechManager : MonoBehaviour
             }
             else
                 technologyProgress.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Unavailable));
+
+            //Add the technology button
+            techTree.FindTechButton(tech);
+        }
+    }
+
+    public void CollectTechs()
+    {
+        string[] results;
+        string[] paths = { "Assets/Technologies" };
+        results = AssetDatabase.FindAssets("t:Technology", paths);
+        foreach (string result in results)
+        {
+            string guid = AssetDatabase.GUIDToAssetPath(result);
+            allTechnologies.Add((Technology)AssetDatabase.LoadAssetAtPath(guid, typeof(Technology)));
         }
     }
 
@@ -87,6 +107,7 @@ public class TechManager : MonoBehaviour
         }
         return true;
     }
+
 
 
     public void UpdateCurrentTechByAmount(float amount)

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum Era { Ancient, Classical, Medieval, Renaissance, Enlightenment, Industrial, Modern, Atomic, Information, Future }
+public enum Era { PreHistory, AncientEra, ClassicalEra, MedievalEra, Renaissance, Enlightenment, IndustrialEra, ModernEra, AtomicEra, InformationEra, FutureEra }
 
 
 public class TimeSystem : MonoBehaviour
 {
     public static TimeSystem instance;
 
+    public Era currentEra;
 
     [Header("Time Info")]
     public int hoursInDay = 24;

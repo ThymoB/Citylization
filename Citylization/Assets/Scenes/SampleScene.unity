@@ -1717,6 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c43e00ce00cd74b8f0742656404eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEra: 0
   hoursInDay: 24
   daysInMonth: 30
   monthsInYear: 4
@@ -2290,6 +2291,9 @@ MonoBehaviour:
   endPoint: {x: 0, y: 0, z: 0}
   lineRenderer: {fileID: 1337935349}
   mouseBehaviour: {fileID: 1469130975}
+  preview: {fileID: 0}
+  validColor: {r: 0, g: 0, b: 0, a: 0}
+  invalidColor: {r: 0, g: 0, b: 0, a: 0}
   creatingLine: 0
   road: {fileID: 0}
   roadsParent: {fileID: 1440829227}
@@ -2875,9 +2879,8 @@ MonoBehaviour:
   currentlyResearching: {fileID: 0}
   lastCompleted: {fileID: 11400000, guid: 1a310031147cde942ac9eb84b931eb5f, type: 2}
   floatingScience: 0
-  allTechnologies:
-  - {fileID: 11400000, guid: 1a310031147cde942ac9eb84b931eb5f, type: 2}
-  - {fileID: 11400000, guid: 2cc0c3ced5143c94ea5c3c62f341c643, type: 2}
+  techTree: {fileID: 2035452488}
+  allTechnologies: []
   availableTechnologies: []
   totalNumberOfTechs: 0
   numberOfTechsResearched: 0
@@ -3430,6 +3433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2035452487}
+  - component: {fileID: 2035452488}
   m_Layer: 5
   m_Name: TechTree
   m_TagString: Untagged
@@ -3457,6 +3461,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2035452488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035452486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5742edcf5806824cb7bcb71124de61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  technologyButtons: []
 --- !u!1001 &2046979682
 PrefabInstance:
   m_ObjectHideFlags: 0

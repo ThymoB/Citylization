@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TechnologyButton : MonoBehaviour
 {
     public Technology technology;
+    public RectTransform rectTransform;
     public UIUnlockable[] unlockablePreview;
     public TextMeshProUGUI nameText;
     public Image icon;
@@ -25,6 +26,11 @@ public class TechnologyButton : MonoBehaviour
     public Color researchingColor;
     public Color unavailableColor;
 
+    [Header("Connection")]
+    public LineRenderer lineRenderer;
+    public RectTransform connectorRequirement;
+    public RectTransform connectorLeadsTo;
+
     private void Start()
     {
         for (int i = 0; i < unlockablePreview.Length; i++)
@@ -37,6 +43,7 @@ public class TechnologyButton : MonoBehaviour
         nameText.text = technology.name;
         icon.sprite = technology.icon;
         UpdateColors();
+        CreateConnectors();
     }
 
     private void OnEnable()
@@ -86,6 +93,23 @@ public class TechnologyButton : MonoBehaviour
         }
 
     }
+
+    public void CreateConnectors()
+    {
+        //Create a connection for each required tech
+        foreach (Technology technology in technology.requiredTechs)
+        {
+            LineRenderer newLine = Instantiate(lineRenderer, transform);
+            newLine.positionCount = 2;
+            //Set the beginning of the line on this requirement dot
+            newLine.SetPosition(0, connectorRequirement.anchoredPosition);
+            //Set the end of the line on one of the required techs LeadsTo dots
+            newLine.SetPosition(1, TechManager.instance.technologyProgress[technology].technologyButton.connectorLeadsTo.anchoredPosition - (rectTransform.anchoredPosition - TechManager.instance.technologyProgress[technology].technologyButton.rectTransform.anchoredPosition));
+        }
+
+    }
+
+
 
 
 }

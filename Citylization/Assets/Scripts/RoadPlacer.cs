@@ -8,6 +8,9 @@ public  class RoadPlacer : MonoBehaviour
     public Vector3 endPoint;
     public LineRenderer lineRenderer;
     public MouseBehaviour mouseBehaviour;
+    public GameObject preview;
+    public Color validColor;
+    public Color invalidColor;
     public bool creatingLine;
     public Road road;
     public Transform roadsParent;

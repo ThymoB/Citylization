@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Technology", menuName = "Technology", order =1)]
+[CreateAssetMenu(fileName ="Technology", menuName = "Technology")]
 public class Technology : ScriptableObject
 {
     public Era era;

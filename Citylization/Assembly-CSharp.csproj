@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\YieldCounter.cs" />
     <Compile Include="Assets\TechManager.cs" />
     <Compile Include="Assets\TechnologyButton.cs" />
+    <Compile Include="Assets\TechTree.cs" />
     <Compile Include="Assets\UIResources.cs" />
     <Compile Include="Assets\UIUnlockable.cs" />
     <Compile Include="Assets\Unlockable.cs" />
