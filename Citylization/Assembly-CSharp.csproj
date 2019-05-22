@@ -69,10 +69,14 @@
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\KeyCommands.cs" />
     <Compile Include="Assets\MouseBehaviour.cs" />
+    <Compile Include="Assets\MyCam.cs" />
     <Compile Include="Assets\PopManager.cs" />
     <Compile Include="Assets\Popup.cs" />
     <Compile Include="Assets\Range.cs" />
     <Compile Include="Assets\ResearchProgress.cs" />
+    <Compile Include="Assets\RTS_Camera\Demo\DemoScene.cs" />
+    <Compile Include="Assets\RTS_Camera\Demo\TargetSelector.cs" />
+    <Compile Include="Assets\RTS_Camera\Scripts\RTS_Camera.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Assets\Scripts\TimeGetter.cs" />
     <Compile Include="Assets\Scripts\TimeSystem.cs" />
     <Compile Include="Assets\Scripts\UnlockInfo.cs" />
+    <Compile Include="Assets\Scripts\Utils\PlacementUtils.cs" />
     <Compile Include="Assets\Scripts\YieldCounter.cs" />
     <Compile Include="Assets\TechManager.cs" />
     <Compile Include="Assets\TechnologyButton.cs" />

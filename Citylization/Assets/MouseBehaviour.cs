@@ -83,9 +83,9 @@ public class MouseBehaviour : MonoBehaviour
                 case MouseMode.PuttingDownRoad:
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
-                        if (roadPlacer.IsValid(mousePosition))
+                        if (roadPlacer.IsValid(roadPlacer.endPoint))
                         {
-                            roadPlacer.SetEndPoint(mousePosition);
+                            roadPlacer.CreateRoad();
                             mode = MouseMode.Free;
                         }
                     }

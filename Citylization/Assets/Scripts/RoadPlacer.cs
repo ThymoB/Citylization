@@ -6,14 +6,18 @@ public  class RoadPlacer : MonoBehaviour
 {
     public Vector3 beginPoint;
     public Vector3 endPoint;
-    public LineRenderer lineRenderer;
     public MouseBehaviour mouseBehaviour;
-    public GameObject preview;
-    public Color validColor;
-    public Color invalidColor;
-    public bool creatingLine;
-    public Road road;
+    public MeshRenderer previewPrefab;
+    public Material validMat;
+    public Material invalidMat;
     public Transform roadsParent;
+    [Header("Grid")]
+    public bool useGrid;
+    public float gridSize = 1f;
+
+    private bool creatingLine;
+    private MeshRenderer preview;
+    private Road road;
 
     public bool IsValid(Vector3 place)
     {
@@ -25,26 +29,24 @@ public  class RoadPlacer : MonoBehaviour
     {
         beginPoint = _beginPoint;
         road = _road;
-        lineRenderer.SetPosition(0, beginPoint);
-        lineRenderer.SetPosition(1, beginPoint);
+        preview = Instantiate(previewPrefab, beginPoint, Quaternion.identity, transform);
         creatingLine = true;
         StartCoroutine(ShowRoad());
     }
 
-    public void SetEndPoint(Vector3 _endPoint)
-    {
-        endPoint = _endPoint;
-        StopCoroutine(ShowRoad());
-        creatingLine = false;
-        lineRenderer.SetPosition(1, endPoint);
-        CreateRoad();
-    }
 
     public void CreateRoad()
     {
-        Road newRoad = Instantiate(road, beginPoint, Quaternion.FromToRotation(beginPoint,endPoint), roadsParent);
-        newRoad.transform.localScale = new Vector3(1, 1, Vector3.Distance(beginPoint, endPoint));
+        StopCoroutine(ShowRoad());
+        creatingLine = false;
 
+        //Straight road
+        Road newRoad = Instantiate(road, beginPoint, Quaternion.identity, roadsParent);
+        newRoad.transform.localScale = preview.transform.localScale;
+        newRoad.transform.LookAt(endPoint);
+
+        //Delete preview
+        Destroy(preview.gameObject);
     }
 
 
@@ -52,7 +54,18 @@ public  class RoadPlacer : MonoBehaviour
     {
         while(creatingLine)
         {
-            lineRenderer.SetPosition(1, mouseBehaviour.mousePosition);
+            endPoint = mouseBehaviour.mousePosition;
+
+            if (useGrid)
+                endPoint = PlacementUtils.SnapToGrid(beginPoint, endPoint, gridSize);
+
+            preview.transform.localScale= new Vector3(1, 1, Vector3.Distance(beginPoint, endPoint));
+            preview.transform.position = Vector3.Lerp(beginPoint, endPoint, 0.5f);
+            preview.transform.LookAt(endPoint);
+            if (IsValid(endPoint))
+                preview.material = validMat;
+            else
+                preview.material = invalidMat;
             yield return null;
         }
         
