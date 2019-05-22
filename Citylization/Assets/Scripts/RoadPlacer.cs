@@ -18,6 +18,7 @@ public  class RoadPlacer : MonoBehaviour
     private bool creatingLine;
     private MeshRenderer preview;
     private Road road;
+    public LayerMask roadLayer;
 
     public bool IsValid(Vector3 place)
     {
@@ -28,6 +29,10 @@ public  class RoadPlacer : MonoBehaviour
     public void SetBeginPoint(Vector3 _beginPoint, Road _road)
     {
         beginPoint = _beginPoint;
+        if (SnapToExistingRoad(out beginPoint))
+        {
+            Debug.Log("Snapping to Road!");
+        }
         road = _road;
         preview = Instantiate(previewPrefab, beginPoint, Quaternion.identity, transform);
         creatingLine = true;
@@ -68,7 +73,32 @@ public  class RoadPlacer : MonoBehaviour
                 preview.material = invalidMat;
             yield return null;
         }
-        
+    }
+
+    bool SnapToExistingRoad(out Vector3 snapPosition)
+    {
+        //Raycast mouse
+        snapPosition = beginPoint;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Road roadToSnapTo;
+        //Return false if it doesn't hit a road
+        if (!Physics.Raycast(ray, out RaycastHit hit, 100, roadLayer))
+            return false;
+
+        roadToSnapTo = hit.collider.GetComponentInParent<Road>();
+        Debug.Log(roadToSnapTo);
+
+        //If collider is already a road, snap it to the middle of the width
+
+
+        //Snap to the end, beginning or bending points of the road
+
+
+        //Change the road mesh to include it
+
+
+
+        return true;
     }
 
 

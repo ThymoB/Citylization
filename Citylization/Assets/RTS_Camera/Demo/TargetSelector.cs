@@ -17,17 +17,20 @@ public class TargetSelector : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+
+    }
+
+    public void FollowTarget()
+    {
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.CompareTag(targetsTag))
-                    cam.SetTarget(hit.transform);
-                else
-                    cam.ResetTarget();
-            }
+            if (hit.transform.CompareTag(targetsTag))
+                cam.SetTarget(hit.transform);
+            else
+                cam.ResetTarget();
         }
+
     }
 }

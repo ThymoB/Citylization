@@ -15,4 +15,18 @@ public class PlacementUtils : MonoBehaviour
         return begin + (Mathf.Round((cur - begin) / size) * size);
     }
 
+    public static List<Vector3> VerticesToSnapTo(MeshFilter meshFilter)
+    {
+        Matrix4x4 localToWorld = meshFilter.transform.localToWorldMatrix;
+        List<Vector3> vertexPoints = new List<Vector3>();
+
+        for (int i = 0; i < meshFilter.mesh.vertices.Length; ++i)
+        {
+            Vector3 world_v = localToWorld.MultiplyPoint3x4(meshFilter.mesh.vertices[i]);
+            vertexPoints.Add(world_v);
+        }
+
+        return vertexPoints;
+    }
+
 }
