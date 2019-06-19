@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2049205025841318655}
   - component: {fileID: 1274621995136995779}
   - component: {fileID: 1625532739681127734}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pavement 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ BoxCollider:
   m_GameObject: {fileID: 1352185871393090102}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -103,7 +103,8 @@ GameObject:
   - component: {fileID: 8489229279325420687}
   - component: {fileID: 818441715513097491}
   - component: {fileID: 7001112712175753029}
-  m_Layer: 0
+  - component: {fileID: 983072723486721919}
+  m_Layer: 10
   m_Name: Dirt Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +171,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modelShell: {fileID: 2166909858650571727}
+--- !u!65 &983072723486721919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052661566782854924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7159704, y: 0.18531775, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &2166909858650571727
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +227,7 @@ GameObject:
   - component: {fileID: 3776840485350460154}
   - component: {fileID: 6516463482548069793}
   - component: {fileID: 1826301091730927073}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Pavement 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +302,7 @@ BoxCollider:
   m_GameObject: {fileID: 5757753625379095562}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -304,7 +318,7 @@ GameObject:
   - component: {fileID: 6102263847721745476}
   - component: {fileID: 2841741148087223079}
   - component: {fileID: 3682671740014836692}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: RoadSegment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +395,7 @@ BoxCollider:
   m_GameObject: {fileID: 9188820311717752295}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

@@ -52,6 +52,7 @@ MonoBehaviour:
   needsToBeRoadside: 1
   size: {x: 3, y: 3}
   purchaseCosts: []
+  buildingsRequired: []
   models:
   - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
   selectedModel: {fileID: 0}

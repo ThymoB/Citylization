@@ -819,22 +819,27 @@ PrefabInstance:
     - target: {fileID: 8047758343516711227, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8047758343516711227, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047758343516711227, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8047758343516711227, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047758343516711227, guid: 8b0042998493b624da4657aeae5c0a1d,
+        type: 3}
+      propertyPath: m_text
+      value: Farming
       objectReference: {fileID: 0}
     - target: {fileID: 5230771958531910500, guid: 8b0042998493b624da4657aeae5c0a1d,
         type: 3}
@@ -2059,10 +2064,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91214b744ea8fea488eb98dff8e9404b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickType: 0
+  nodePrefab: {fileID: -4879668898371597872, guid: 27813020eed6e3440b346563d8e4cb9c,
+    type: 3}
+  selectedNode: {fileID: 0}
+  snapSize: 1
   beginPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
   mouseBehaviour: {fileID: 1469130975}
-  previewPrefab: {fileID: 135232289173486267, guid: 09f053f7edc952b4b9ff00182949de4c,
+  previewPrefab: {fileID: 4758073478604338973, guid: 09f053f7edc952b4b9ff00182949de4c,
     type: 3}
   validMat: {fileID: 2100000, guid: f2c335318bb11e94c87bced2c830a6fb, type: 2}
   invalidMat: {fileID: 2100000, guid: d3e215b13bd0f8040a00d32fc85dc8fe, type: 2}
@@ -2072,6 +2082,9 @@ MonoBehaviour:
   roadLayer:
     serializedVersion: 2
     m_Bits: 1024
+  roadAndNodeLayer:
+    serializedVersion: 2
+    m_Bits: 3072
 --- !u!1001 &1341236413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3110,7 +3123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef8c68bade09b41aca258d42a632f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTab: 2
+  lastTab: 0
   movementSettingsFoldout: 1
   zoomingSettingsFoldout: 0
   rotationSettingsFoldout: 1
@@ -3235,13 +3248,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811042301}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
   m_LocalPosition: {x: 0, y: 8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!1 &1907845824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3609,7 @@ GameObject:
   - component: {fileID: 2108067366}
   - component: {fileID: 2108067365}
   - component: {fileID: 2108067364}
+  - component: {fileID: 2108067368}
   m_Layer: 9
   m_Name: TestFloor
   m_TagString: Untagged
@@ -3675,6 +3689,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2108067368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108067363}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff78e9c4b49b2144a41729267fe62c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabRoad: {fileID: 5861592429819610233, guid: 95a4821cafea4674da3f1ff03bfeee0b,
+    type: 3}
+  prefabNode: {fileID: 5742305769696757329, guid: 27813020eed6e3440b346563d8e4cb9c,
+    type: 3}
 --- !u!224 &3031189551594853676
 RectTransform:
   m_ObjectHideFlags: 0

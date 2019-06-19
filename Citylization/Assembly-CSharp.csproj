@@ -87,9 +87,12 @@
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\Ability.cs" />
     <Compile Include="Assets\Scripts\Building\Building.cs" />
+    <Compile Include="Assets\Scripts\Building\BuildingRequired.cs" />
     <Compile Include="Assets\Scripts\Building\GeneratingBuilding.cs" />
     <Compile Include="Assets\Scripts\Building\Household.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\GroundClick.cs" />
+    <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerResource.cs" />
     <Compile Include="Assets\Scripts\PopYieldCounter.cs" />

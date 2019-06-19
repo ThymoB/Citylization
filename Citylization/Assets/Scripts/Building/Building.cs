@@ -10,6 +10,9 @@ public class Building : MonoBehaviour
     public Vector2 size = new Vector2(3f,3f);
     [SerializeField]
     public List<ResourceCost> purchaseCosts = new List<ResourceCost>();
+
+    [Header("Requirements")]
+    public List<BuildingRequired> buildingsRequired = new List<BuildingRequired>();
         
 
     [Header("Models")]
