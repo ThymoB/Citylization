@@ -18,7 +18,7 @@ public class PopYieldCounter : YieldCounter
                 }
             case YieldCountRange.Self:
                 {
-                    amount = GetComponent<Household>().residents * multiplier;
+                    amount = GetComponent<Household>().popAmount * multiplier;
                     break;
                 }
 
@@ -32,7 +32,7 @@ public class PopYieldCounter : YieldCounter
                     foreach (Collider collider in foundHouseholds)
                     {
                         Household household = collider.GetComponentInParent<Household>();
-                        popInRange += household.residents;
+                        popInRange += household.popAmount;
                     }
                     amount = popInRange * multiplier;
                     break;

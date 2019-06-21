@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Household : Building
 {
-    [Header("Residents")]
-    public int residents;
-    public int maxResidents;
+    [Header("Pop")]
+    public int popAmount;
+    public int maxPop;
+    public List<Pop> pops = new List<Pop>();
 
 
 }

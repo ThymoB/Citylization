@@ -34,7 +34,7 @@ public class PopManager : MonoBehaviour
 
         foreach (Household household in households)
         {
-            totalPop += household.residents;
+            totalPop += household.popAmount;
         }
 
     }

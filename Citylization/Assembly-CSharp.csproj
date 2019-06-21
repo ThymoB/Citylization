@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerResource.cs" />
+    <Compile Include="Assets\Scripts\Pop.cs" />
     <Compile Include="Assets\Scripts\PopYieldCounter.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\ResourceCost.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Assets\Scripts\Technology.cs" />
     <Compile Include="Assets\Scripts\TimeGetter.cs" />
     <Compile Include="Assets\Scripts\TimeSystem.cs" />
+    <Compile Include="Assets\Scripts\Tourist.cs" />
     <Compile Include="Assets\Scripts\UnlockInfo.cs" />
     <Compile Include="Assets\Scripts\Utils\PlacementUtils.cs" />
     <Compile Include="Assets\Scripts\YieldCounter.cs" />
