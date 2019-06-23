@@ -7,6 +7,7 @@ public class PopManager : MonoBehaviour
     public static PopManager instance;
     public int totalPop;
     public GameObject householdsParent;
+    public float priorityQuotient;
 
     private void Awake()
     {

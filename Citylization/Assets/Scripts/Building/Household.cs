@@ -8,6 +8,7 @@ public class Household : Building
     public int popAmount;
     public int maxPop;
     public List<Pop> pops = new List<Pop>();
+    public List<Building> buildingsInRange = new List<Building>();
 
 
 }

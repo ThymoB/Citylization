@@ -10,7 +10,7 @@ public  class RoadPlacer : MonoBehaviour
     public ClickType endType;
     public Node nodePrefab;
     public Node selectedNode;
-    public float snapSize = 1;
+    public float snapSize = 0.5f;
     public Vector3 beginPoint;
     public Vector3 endPoint; 
     public MouseBehaviour mouseBehaviour;
@@ -18,32 +18,30 @@ public  class RoadPlacer : MonoBehaviour
     public Material validMat;
     public Material invalidMat;
     public Transform roadsParent;
+    public bool creatingLine;
     [Header("Grid")]
     public bool useGrid;
     public float gridSize = 1f;
 
-    private bool creatingLine;
     private GameObject preview;
     private MeshRenderer previewMR;
     private Road road;
     public LayerMask roadLayer;
     public LayerMask roadAndNodeLayer;
 
-    public bool IsValid(Vector3 place, out ClickType _clickType)
-    {
+    public bool IsValid(Vector3 place, out ClickType _clickType) { 
         Collider[] colliders = Physics.OverlapSphere(place, snapSize, roadAndNodeLayer);
-
         _clickType = ClickType.Free;
         float minDistance = Mathf.Infinity;
         foreach (Collider collider in colliders) {
-            if (collider.gameObject.layer == roadLayer) {
-                _clickType = ClickType.Road;
-            }
-            else {
+            if(collider.tag=="Node"){
                 _clickType = ClickType.Node;
                 Node curNode = collider.GetComponent<Node>();
                 float curDistance = Vector3.Distance(curNode.transform.position, place);
                 if (curDistance < minDistance) selectedNode = curNode;
+            }
+            else if (collider.tag == "Road") {
+                _clickType = ClickType.Road;
             }
         }
         if(creatingLine) {
@@ -54,7 +52,6 @@ public  class RoadPlacer : MonoBehaviour
     }
 
     public void SetBeginPoint(Vector3 _beginPoint, Road _road, ClickType _clickType) {
-
         switch (_clickType) {
             case ClickType.Node:
                 beginPoint = selectedNode.transform.position;
@@ -68,12 +65,12 @@ public  class RoadPlacer : MonoBehaviour
         }
         road = _road;
         preview = Instantiate(previewPrefab, beginPoint, Quaternion.identity, transform);
+        previewMR = preview.GetComponent<MeshRenderer>();
         creatingLine = true;
         StartCoroutine(ShowRoad());
     }
 
     public void SetEndPoint(Vector3 _endPoint, ClickType _clickType) {
-
         switch (_clickType) {
             case ClickType.Node:
                 endPoint = selectedNode.transform.position;
@@ -94,14 +91,15 @@ public  class RoadPlacer : MonoBehaviour
         StopCoroutine(ShowRoad());
         creatingLine = false;
 
-        //Straight road
+        //Create nodes
+        CreateNode(beginType, beginPoint);
+        CreateNode(endType, endPoint);
+
+        //Create Roads between nodes
         Road newRoad = Instantiate(road, beginPoint, Quaternion.identity, roadsParent);
         newRoad.transform.localScale = preview.transform.localScale;
         newRoad.transform.LookAt(endPoint);
 
-        //Create nodes
-        CreateNode(beginType, beginPoint);
-        CreateNode(endType, endPoint);
         
 
         //Delete preview
@@ -109,6 +107,7 @@ public  class RoadPlacer : MonoBehaviour
     }
 
     void CreateNode(ClickType clickType, Vector3 point) {
+        Debug.Log(clickType);
         switch (clickType) {
             case ClickType.Free:
                 Instantiate(nodePrefab, point, Quaternion.identity, transform);
@@ -124,17 +123,13 @@ public  class RoadPlacer : MonoBehaviour
 
     IEnumerator ShowRoad()
     {
-        while(creatingLine)
-        {
-            if (IsValid(endPoint, out endType)) {
-                SetEndPoint(mouseBehaviour.mousePosition, endType);
-                preview.transform.localScale = new Vector3(1, 1, Vector3.Distance(beginPoint, endPoint));
-                preview.transform.position = Vector3.Lerp(beginPoint, endPoint, 0.5f);
-                preview.transform.LookAt(endPoint);
-                previewMR.material = validMat;
-            }
-            else
-                previewMR.material = invalidMat;
+        while (creatingLine) {
+            SetEndPoint(mouseBehaviour.mousePosition, endType);
+            IsValid(mouseBehaviour.mousePosition, out endType);
+            preview.transform.localScale = new Vector3(1, 1, Vector3.Distance(beginPoint, endPoint));
+            preview.transform.position = Vector3.Lerp(beginPoint, endPoint, 0.5f);
+            preview.transform.LookAt(endPoint);
+            previewMR.material = validMat;
             yield return null;
         }
     }
@@ -148,7 +143,7 @@ public  class RoadPlacer : MonoBehaviour
             roadToSnapTo = hit.collider.GetComponentInParent<Road>();
             Debug.Log(roadToSnapTo);
         }
-        return Vector3.zero;
+        return point;
 
     }
 

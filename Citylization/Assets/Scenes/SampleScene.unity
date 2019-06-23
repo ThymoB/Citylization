@@ -975,6 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalPop: 0
   householdsParent: {fileID: 1610724291}
+  priorityQuotient: 0
 --- !u!1 &561862476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,12 +2065,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91214b744ea8fea488eb98dff8e9404b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beginType: 0
-  endType: 0
+  beginType: 2
+  endType: 2
   nodePrefab: {fileID: -4879668898371597872, guid: 27813020eed6e3440b346563d8e4cb9c,
     type: 3}
   selectedNode: {fileID: 0}
-  snapSize: 1
+  snapSize: 0.2
   beginPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
   mouseBehaviour: {fileID: 1469130975}
@@ -2078,7 +2079,8 @@ MonoBehaviour:
   validMat: {fileID: 2100000, guid: f2c335318bb11e94c87bced2c830a6fb, type: 2}
   invalidMat: {fileID: 2100000, guid: d3e215b13bd0f8040a00d32fc85dc8fe, type: 2}
   roadsParent: {fileID: 1440829227}
-  useGrid: 1
+  creatingLine: 0
+  useGrid: 0
   gridSize: 0.5
   roadLayer:
     serializedVersion: 2

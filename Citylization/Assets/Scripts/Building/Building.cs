@@ -11,8 +11,10 @@ public class Building : MonoBehaviour
     [SerializeField]
     public List<ResourceCost> purchaseCosts = new List<ResourceCost>();
 
+
     [Header("Requirements")]
     public List<BuildingRequired> buildingsRequired = new List<BuildingRequired>();
+    public int population;
         
 
     [Header("Models")]
@@ -31,6 +33,11 @@ public class Building : MonoBehaviour
 
     [HideInInspector]
     public bool operating = false;
+
+    [Header("Capacity")]
+    public bool usePopCapacity;
+    public int currentPops;
+    public int popCapacity;
 
     [Header("Yields")]
     [SerializeField]

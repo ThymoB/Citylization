@@ -27,9 +27,7 @@ public class ResourceYield : MonoBehaviour
     [Header("Range")]
     public Range range;
 
-    [Header("Capacity")]
-    public bool useDailyCapacity;
-    public float dailyCapacity;
+
 
     private bool active = false;
     private UnityAction timeListener;
@@ -99,20 +97,18 @@ public class ResourceYield : MonoBehaviour
 
     public void GiveResource()
     {
-        if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
-        {
+
             yieldPerHour+=dailyAmount;
             ResourceSystem.instance.AddToPlayer(resource, dailyAmount, transform, 1/dailyAmount);
-        }
+        
     }
 
     public void UseResource()
     {
-        if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
-        {
+
             yieldPerHour -= dailyAmount;
             ResourceSystem.instance.RemoveFromPlayer(resource, dailyAmount, transform, 1 / dailyAmount);
-        }
+        
 
     }
 
@@ -128,11 +124,10 @@ public class ResourceYield : MonoBehaviour
                 //Grant resource
                 if (grantOrUseResource == GrantOrUseResource.Grant)
                 {
-                    if (!useDailyCapacity || yieldPerDay + yieldPerHour < dailyCapacity)
-                    {
+
                         yieldPerHour++;
                         ResourceSystem.instance.AddToPlayer(resource, 1f, transform, dailyAmount);
-                    }
+                    
                 }
                 //Use Resource
                 else if (grantOrUseResource==GrantOrUseResource.Use)
