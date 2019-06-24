@@ -2080,7 +2080,7 @@ MonoBehaviour:
   invalidMat: {fileID: 2100000, guid: d3e215b13bd0f8040a00d32fc85dc8fe, type: 2}
   roadsParent: {fileID: 1440829227}
   creatingLine: 0
-  useGrid: 0
+  useGrid: 1
   gridSize: 0.5
   roadLayer:
     serializedVersion: 2

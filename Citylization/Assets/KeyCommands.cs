@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class KeyCommands : MonoBehaviour
 {
-    
+    public static KeyCommands instance;
+
     [Header("Time")]
     public KeyCode slowSpeed = KeyCode.Alpha1;
     public KeyCode medSpeed = KeyCode.Alpha2;
@@ -16,6 +17,12 @@ public class KeyCommands : MonoBehaviour
     [Header("Windows")]
     public KeyCode techTree = KeyCode.T;
 
+    [Header("Placement")]
+    public KeyCode curveRoad = KeyCode.C;
+
+    private void Awake() {
+        if (instance == null) instance = this;
+    }
     // Update is called once per frame
     void Update()
     {

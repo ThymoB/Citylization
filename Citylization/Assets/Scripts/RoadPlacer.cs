@@ -29,21 +29,17 @@ public  class RoadPlacer : MonoBehaviour
     public LayerMask roadLayer;
     public LayerMask roadAndNodeLayer;
 
-    public bool IsValid(Vector3 place, out ClickType _clickType) { 
-        Collider[] colliders = Physics.OverlapSphere(place, snapSize, roadAndNodeLayer);
-        _clickType = ClickType.Free;
-        float minDistance = Mathf.Infinity;
-        foreach (Collider collider in colliders) {
-            if(collider.tag=="Node"){
-                _clickType = ClickType.Node;
-                Node curNode = collider.GetComponent<Node>();
-                float curDistance = Vector3.Distance(curNode.transform.position, place);
-                if (curDistance < minDistance) selectedNode = curNode;
-            }
-            else if (collider.tag == "Road") {
-                _clickType = ClickType.Road;
-            }
+    public bool IsValid(Vector3 place, out ClickType _clickType) {
+        if (GetNodeAtPoint(place, out selectedNode)) {
+            _clickType = ClickType.Node;
         }
+        else if (GetRoadAtPoint(place, out Road foundRoad)) {
+            _clickType = ClickType.Road;
+        }
+        else _clickType = ClickType.Free;
+
+
+        
         if(creatingLine) {
 
         }
@@ -67,6 +63,7 @@ public  class RoadPlacer : MonoBehaviour
         preview = Instantiate(previewPrefab, beginPoint, Quaternion.identity, transform);
         previewMR = preview.GetComponent<MeshRenderer>();
         creatingLine = true;
+        endPoint = beginPoint;
         StartCoroutine(ShowRoad());
     }
 
@@ -79,7 +76,7 @@ public  class RoadPlacer : MonoBehaviour
                 endPoint = SnapToExistingRoad(_endPoint);
                 break;
             case ClickType.Free:
-                if (useGrid) endPoint = PlacementUtils.SnapToGrid(beginPoint, endPoint, gridSize);
+                if (useGrid) endPoint = PlacementUtils.SnapToGrid(beginPoint, _endPoint, gridSize);
                 else endPoint = _endPoint;
                 break;
         }
@@ -92,40 +89,50 @@ public  class RoadPlacer : MonoBehaviour
         creatingLine = false;
 
         //Create nodes
-        CreateNode(beginType, beginPoint);
-        CreateNode(endType, endPoint);
+        Node beginNode = CreateNode(beginType, beginPoint);
+        selectedNode = CreateNode(endType, endPoint);
 
         //Create Roads between nodes
         Road newRoad = Instantiate(road, beginPoint, Quaternion.identity, roadsParent);
         newRoad.transform.localScale = preview.transform.localScale;
         newRoad.transform.LookAt(endPoint);
-
-        
+        ConnectRoadEndsAroundNode(beginNode);
 
         //Delete preview
-        Destroy(preview.gameObject);
+        Destroy(preview);
+
+
+
+        //Begin new road
+        SetBeginPoint(beginPoint, road, ClickType.Node);
     }
 
-    void CreateNode(ClickType clickType, Vector3 point) {
-        Debug.Log(clickType);
+    Node CreateNode(ClickType clickType, Vector3 point) {
         switch (clickType) {
             case ClickType.Free:
-                Instantiate(nodePrefab, point, Quaternion.identity, transform);
-                break;
+                return Instantiate(nodePrefab, point, Quaternion.identity, transform);
             case ClickType.Node:
-                break;
+                GetNodeAtPoint(point, out Node node);
+                return node;
             case ClickType.Road:
-                Instantiate(nodePrefab, SnapToExistingRoad(point), Quaternion.identity, transform);
-                break;
+                return Instantiate(nodePrefab, SnapToExistingRoad(point), Quaternion.identity, transform);
         }
+        return null;
     }
 
 
     IEnumerator ShowRoad()
     {
         while (creatingLine) {
-            SetEndPoint(mouseBehaviour.mousePosition, endType);
+            //Curve line
+            if(Input.GetKeyDown(KeyCommands.instance.curveRoad)) {
+                //CurveRoad();
+                Debug.Log("Curving Road!");
+            }
+
+            //Straight line
             IsValid(mouseBehaviour.mousePosition, out endType);
+            SetEndPoint(mouseBehaviour.mousePosition, endType);
             preview.transform.localScale = new Vector3(1, 1, Vector3.Distance(beginPoint, endPoint));
             preview.transform.position = Vector3.Lerp(beginPoint, endPoint, 0.5f);
             preview.transform.LookAt(endPoint);
@@ -139,13 +146,58 @@ public  class RoadPlacer : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Road roadToSnapTo;
         if (Physics.Raycast(ray, out RaycastHit hit, 100, roadLayer)) {
-
             roadToSnapTo = hit.collider.GetComponentInParent<Road>();
-            Debug.Log(roadToSnapTo);
         }
         return point;
 
     }
 
+    public void CancelPlacing() {
+        Destroy(preview);
+        StopCoroutine(ShowRoad());
+        creatingLine = false;
+    }
+
+    bool GetNodeAtPoint(Vector3 point, out Node node) {
+        node = null;
+        Collider[] colliders = Physics.OverlapSphere(point, snapSize);
+        float minDistance = Mathf.Infinity;
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Node") {
+                Node curNode = collider.GetComponent<Node>();
+                float curDistance = Vector3.Distance(curNode.transform.position, point);
+                if (curDistance < minDistance) node = curNode;
+            }
+        }
+        if (node != null) return true;
+        else return false;
+    }
+
+    bool GetRoadAtPoint(Vector3 point, out Road road) {
+        road = null;
+        Collider[] colliders = Physics.OverlapSphere(point, snapSize);
+        float minDistance = Mathf.Infinity;
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Road") {
+                Road curRoad = collider.GetComponent<Road>();
+                float curDistance = Vector3.Distance(curRoad.transform.position, point);
+                if (curDistance < minDistance) road = curRoad;
+            }
+        }
+        if (road != null) return true;
+        else return false;
+    }
+
+    void ConnectRoadEndsAroundNode(Node node) {
+        //Look up corner vertices of all roads around a node and make their transform the same
+    }
+
+    public void CurveRoad() {
+        if (creatingLine) {
+            SetEndPoint(mouseBehaviour.mousePosition, ClickType.Free);
+
+
+        }
+    }
 
 }

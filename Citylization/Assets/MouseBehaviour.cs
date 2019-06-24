@@ -74,9 +74,12 @@ public class MouseBehaviour : MonoBehaviour
                     {
                         if (roadPlacer.IsValid(mousePosition, out ClickType clickType))
                         {
-                            roadPlacer.SetBeginPoint(mousePosition, road, roadPlacer.beginType);
+                            roadPlacer.SetBeginPoint(mousePosition, road, clickType);
                             mode = MouseMode.PuttingDownRoad;
                         }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Mouse1)) {
+                        mode = MouseMode.Free;
                     }
                     break;
 
@@ -86,6 +89,11 @@ public class MouseBehaviour : MonoBehaviour
                         if (roadPlacer.IsValid(roadPlacer.endPoint, out roadPlacer.endType))
                         {
                             roadPlacer.CreateRoad();
+                        }
+                    }
+                    if (Input.GetKeyDown(KeyCode.Mouse1)) {
+                        if (roadPlacer.creatingLine) {
+                            roadPlacer.CancelPlacing();
                             mode = MouseMode.Free;
                         }
                     }
