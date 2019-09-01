@@ -25,7 +25,6 @@ public class MouseBehaviour : MonoBehaviour
         unlockableType = selectedUnlockable.type;
         switch(unlockableType)
         {
-
             case UnlockableType.Building:
                 StartCarryingBuilding();
                 break;
@@ -33,12 +32,8 @@ public class MouseBehaviour : MonoBehaviour
             case UnlockableType.Road:
                 StartPlacingRoad();
                 break;
-
         }
-
     }
-
-
 
     public void StartCarryingBuilding()
     {

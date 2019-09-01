@@ -14,8 +14,7 @@ public class TechManager : MonoBehaviour
     public List<Technology> allTechnologies;
     public List<Technology> availableTechnologies;
 
-    public Dictionary<Technology, TechInfo> technologyProgress = new Dictionary<Technology, TechInfo>();
-
+    public Dictionary<Technology, TechInfo> techDictionary = new Dictionary<Technology, TechInfo>();
 
     [SerializeField]
     private int totalNumberOfTechs;
@@ -71,14 +70,14 @@ public class TechManager : MonoBehaviour
         foreach (Technology tech in allTechnologies)
         {
             if (Player.instance.learnedTechnologies.Contains(tech))
-                technologyProgress.Add(tech, new TechInfo(tech.costToResearch, tech.costToResearch, TechStatus.Completed));
+                techDictionary.Add(tech, new TechInfo(tech.costToResearch, tech.costToResearch, TechStatus.Completed));
             else if (CanLearnTech(tech))
             {
-                technologyProgress.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Available));
+                techDictionary.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Available));
                 availableTechnologies.Add(tech);
             }
             else
-                technologyProgress.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Unavailable));
+                techDictionary.Add(tech, new TechInfo(0f, tech.costToResearch, TechStatus.Unavailable));
 
             //Add the technology button
             techTree.FindTechButton(tech);
@@ -114,8 +113,8 @@ public class TechManager : MonoBehaviour
     {
         if (currentlyResearching != null)
         {
-            technologyProgress[currentlyResearching].progress += amount;
-            if (technologyProgress[currentlyResearching].progress >= currentlyResearching.costToResearch)
+            techDictionary[currentlyResearching].progress += amount;
+            if (techDictionary[currentlyResearching].progress >= currentlyResearching.costToResearch)
                 AwardCurrentTechToPlayer();
         }
         else floatingScience += amount;
@@ -125,7 +124,7 @@ public class TechManager : MonoBehaviour
     {
         Player.instance.learnedTechnologies.Add(technology);
         lastCompleted = technology;
-        technologyProgress[lastCompleted].techStatus = TechStatus.Completed;
+        techDictionary[lastCompleted].techStatus = TechStatus.Completed;
         UnlockManager.instance.UnlockFromTech(technology);
         if (technology == currentlyResearching)
             currentlyResearching = null;
@@ -140,19 +139,19 @@ public class TechManager : MonoBehaviour
     //Add all floating science to the technology
     public void AddFloatingToTech()
     {
-        technologyProgress[currentlyResearching].progress += floatingScience;
+        techDictionary[currentlyResearching].progress += floatingScience;
         floatingScience = 0;
     }
 
     //Switch from one tech to another when clicking on the tech tree for example
     public void SwitchTechs(Technology technology)
     {
-        if (technologyProgress[technology].techStatus == TechStatus.Available)
+        if (techDictionary[technology].techStatus == TechStatus.Available)
         {
 
 
             currentlyResearching = technology;
-            technologyProgress[currentlyResearching].techStatus = TechStatus.Researching;
+            techDictionary[currentlyResearching].techStatus = TechStatus.Researching;
             AddFloatingToTech();
         }
         /*

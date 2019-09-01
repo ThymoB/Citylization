@@ -10,6 +10,7 @@ public class Unlockable : MonoBehaviour
 {
     public Sprite iconOnTechTree;
     public Sprite iconOnMenu;
+    public Description description;
     public UnlockableType type;
     public UnlockableMenuCategory menuCategory;
     public Technology obsolete;

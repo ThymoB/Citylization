@@ -43,7 +43,7 @@ public class ResearchProgress : MonoBehaviour
     //Every time science comes in or a tech is completed, update the progress
     public void UpdateProgress()
     {
-        if (TechManager.instance.technologyProgress.TryGetValue(technologyButton.technology, out TechInfo techInfo))
+        if (TechManager.instance.techDictionary.TryGetValue(technologyButton.technology, out TechInfo techInfo))
         {
             blueBar.localScale = new Vector3(techInfo.progress / techInfo.scienceNeeded, 1f, 1f);
             numbers.text = techInfo.progress.ToString() + "/" + techInfo.scienceNeeded.ToString();

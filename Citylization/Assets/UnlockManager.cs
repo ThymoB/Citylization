@@ -9,7 +9,7 @@ public class UnlockManager : MonoBehaviour
 
     public List<Unlockable> allUnlockables = new List<Unlockable>();
 
-    public Dictionary<Unlockable, UnlockInfo> unlocksInfo = new Dictionary<Unlockable, UnlockInfo>();
+    public Dictionary<Unlockable, UnlockInfo> unlocksDictionary = new Dictionary<Unlockable, UnlockInfo>();
     public List<BuildMenuButton> buildMenuButtons = new List<BuildMenuButton>();
 
     public Color unlockedColor;
@@ -39,7 +39,7 @@ public class UnlockManager : MonoBehaviour
     {
         foreach (Unlockable unlockable in allUnlockables)
         {
-            unlocksInfo.Add(unlockable, new UnlockInfo(CheckStatus(unlockable), 0, 0));
+            unlocksDictionary.Add(unlockable, new UnlockInfo(CheckStatus(unlockable), 0, 0));
             AddToMenu(unlockable);
         }
 
@@ -64,7 +64,7 @@ public class UnlockManager : MonoBehaviour
     {
         foreach (Unlockable unlockable in technology.unlocks)
         {
-            unlocksInfo[unlockable].unlockStatus = status;
+            unlocksDictionary[unlockable].unlockStatus = status;
         }
 
     }
@@ -77,9 +77,9 @@ public class UnlockManager : MonoBehaviour
         UnlockStatus unlockStatus;
 
         //if it already exists
-        if (unlocksInfo.TryGetValue(unlockable, out UnlockInfo existingInfo))
+        if (unlocksDictionary.TryGetValue(unlockable, out UnlockInfo existingInfo))
         {
-            unlockStatus = unlocksInfo[unlockable].unlockStatus;
+            unlockStatus = unlocksDictionary[unlockable].unlockStatus;
 
             if (existingInfo.currentAmount >= unlockable.maxAmount)
             {

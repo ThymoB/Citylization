@@ -67,6 +67,7 @@
     <Compile Include="Assets\Expedition.cs" />
     <Compile Include="Assets\FreeCam.cs" />
     <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\HoverOverInfo.cs" />
     <Compile Include="Assets\KeyCommands.cs" />
     <Compile Include="Assets\MouseBehaviour.cs" />
     <Compile Include="Assets\MyCam.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Building\Household.cs" />
     <Compile Include="Assets\Scripts\EventManager.cs" />
     <Compile Include="Assets\Scripts\GroundClick.cs" />
+    <Compile Include="Assets\Scripts\HoverOverDescription.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerResource.cs" />

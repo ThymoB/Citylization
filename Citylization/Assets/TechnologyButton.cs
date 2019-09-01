@@ -69,7 +69,7 @@ public class TechnologyButton : MonoBehaviour
 
     public void UpdateColors()
     {
-        switch (TechManager.instance.technologyProgress[technology].techStatus)
+        switch (TechManager.instance.techDictionary[technology].techStatus)
         {
             case TechStatus.Unavailable:
                 outline.effectColor = unavailableColor;
@@ -94,22 +94,15 @@ public class TechnologyButton : MonoBehaviour
 
     }
 
-    public void CreateConnectors()
-    {
+    public void CreateConnectors() {
         //Create a connection for each required tech
-        foreach (Technology technology in technology.requiredTechs)
-        {
+        foreach (Technology technology in technology.requiredTechs) {
             LineRenderer newLine = Instantiate(lineRenderer, transform);
             newLine.positionCount = 2;
             //Set the beginning of the line on this requirement dot
             newLine.SetPosition(0, connectorRequirement.anchoredPosition);
             //Set the end of the line on one of the required techs LeadsTo dots
-            newLine.SetPosition(1, TechManager.instance.technologyProgress[technology].technologyButton.connectorLeadsTo.anchoredPosition - (rectTransform.anchoredPosition - TechManager.instance.technologyProgress[technology].technologyButton.rectTransform.anchoredPosition));
+            newLine.SetPosition(1, TechManager.instance.techDictionary[technology].technologyButton.connectorLeadsTo.anchoredPosition - (rectTransform.anchoredPosition - TechManager.instance.techDictionary[technology].technologyButton.rectTransform.anchoredPosition));
         }
-
     }
-
-
-
-
 }

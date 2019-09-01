@@ -17,7 +17,7 @@ public class TechTree : MonoBehaviour
         {
             if(technology==technologyButton.technology)
             {
-                TechManager.instance.technologyProgress[technology].technologyButton = technologyButton;
+                TechManager.instance.techDictionary[technology].technologyButton = technologyButton;
             }
 
         }

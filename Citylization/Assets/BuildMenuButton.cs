@@ -47,7 +47,7 @@ public class BuildMenuButton : MonoBehaviour
         }
 
         //(De)Activate button
-        switch (UnlockManager.instance.unlocksInfo[unlockable].unlockStatus)
+        switch (UnlockManager.instance.unlocksDictionary[unlockable].unlockStatus)
         {
             case UnlockStatus.Unlocked:
                 newPicker.icon.color = UnlockManager.instance.unlockedColor;
@@ -77,7 +77,7 @@ public class BuildMenuButton : MonoBehaviour
             if (unlockablePicker.unlockable == unlockable)
             {
                 //Only be able to buy it if you have it unlocked
-                unlockablePicker.Unlock(UnlockManager.instance.unlocksInfo[unlockable].unlockStatus);
+                unlockablePicker.Unlock(UnlockManager.instance.unlocksDictionary[unlockable].unlockStatus);
                 return;
             }
         }
