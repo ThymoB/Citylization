@@ -5,7 +5,6 @@ using UnityEngine;
 public enum UnlockableType { Building, Zone, Road, Ability, Bonus }
 public enum UnlockableMenuCategory { Roads, Residential, Commercial, Industrial, Scientific, Cultural, Economic, Governmental, Health, Service, Protection }
 
-[RequireComponent(typeof(Description))]
 public class Unlockable : MonoBehaviour
 {
     public Sprite iconOnTechTree;

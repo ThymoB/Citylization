@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7304773006055931292}
-  - component: {fileID: 7304773006055931295}
+  - component: {fileID: 169087991454957268}
   - component: {fileID: 7304773006055931293}
   - component: {fileID: 987981055367886343}
-  - component: {fileID: 2932237071825397720}
   - component: {fileID: 6429351557566368485}
   m_Layer: 0
   m_Name: Governor's Hut
@@ -36,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7304773006055931295
+--- !u!114 &169087991454957268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7304773006055931294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48835a4d6d07a9e4f9e341c0254ca65d, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a87c4fbecd26d4fa3b923d8995982c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
@@ -53,18 +52,20 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   purchaseCosts: []
   buildingsRequired: []
+  populationRequired: 0
   models:
-  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+  - {fileID: 5938356798382664358}
   selectedModel: {fileID: 0}
-  abilities:
-  - {fileID: 2215413927009473708, guid: 676ccd6cbd2241940a2971db3676f993, type: 3}
+  abilities: []
   openAllDay: 0
   openTime: 8
-  closeTime: 20
+  closeTime: 18
   operating: 0
+  usePopCapacity: 0
+  currentPops: 0
+  popCapacity: 0
   resourceYields:
   - {fileID: 7304773006055931293}
-  - {fileID: 6429351557566368485}
   resourcesUsed: []
 --- !u!114 &7304773006055931293
 MonoBehaviour:
@@ -85,11 +86,9 @@ MonoBehaviour:
   useFixedDailyYield: 0
   fixedDailyYieldTime: 0
   getBuildingOperatingTime: 1
-  building: {fileID: 7304773006055931295}
+  building: {fileID: 169087991454957268}
   yieldCounter: {fileID: 0}
   range: {fileID: 0}
-  useDailyCapacity: 0
-  dailyCapacity: 0
 --- !u!114 &987981055367886343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,24 +103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: c1b387eb94cb50e4982ea96f9df31386, type: 3}
   iconOnMenu: {fileID: 0}
+  description: {fileID: 0}
   type: 0
   menuCategory: 7
   obsolete: {fileID: 0}
   useMaxAmount: 0
   maxAmount: 0
---- !u!114 &2932237071825397720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7304773006055931294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: Primal Government building, grants Sway and Science per day
 --- !u!114 &6429351557566368485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,11 +128,9 @@ MonoBehaviour:
   useFixedDailyYield: 1
   fixedDailyYieldTime: 15
   getBuildingOperatingTime: 0
-  building: {fileID: 0}
+  building: {fileID: 169087991454957268}
   yieldCounter: {fileID: 0}
   range: {fileID: 0}
-  useDailyCapacity: 0
-  dailyCapacity: 0
 --- !u!1001 &7304773006633339829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,16 +138,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7304773006055931292}
     m_Modifications:
-    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
-        type: 3}
-      propertyPath: m_Name
-      value: Town Hall test model
-      objectReference: {fileID: 0}
-    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,8 +193,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_Name
+      value: Town Hall test model
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+--- !u!1 &5938356798382664358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7304773006633339829}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6106099771695511102 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3594713890732064139, guid: c3101b346c80bb84da3368c03d4b80b8,

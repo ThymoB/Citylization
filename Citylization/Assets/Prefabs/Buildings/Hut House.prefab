@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6134359838356149885}
   - component: {fileID: 6134359838356149886}
   - component: {fileID: 5887775813337426641}
-  - component: {fileID: 138669900454346041}
   - component: {fileID: 1452620005565125667}
   - component: {fileID: 4498554533791859355}
   - component: {fileID: 5958532341142893860}
   - component: {fileID: 2232228029768318449}
+  - component: {fileID: 7470577076187365285}
   m_Layer: 8
   m_Name: Hut House
   m_TagString: Household
@@ -54,6 +54,8 @@ MonoBehaviour:
   needsToBeRoadside: 1
   size: {x: 1, y: 1}
   purchaseCosts: []
+  buildingsRequired: []
+  populationRequired: 0
   models:
   - {fileID: 1738895833323559595, guid: ab46f7acd3587f9429853c8e0bf41496, type: 3}
   selectedModel: {fileID: 0}
@@ -62,11 +64,16 @@ MonoBehaviour:
   openTime: 8
   closeTime: 18
   operating: 0
+  usePopCapacity: 0
+  currentPops: 0
+  popCapacity: 0
   resourceYields:
   - {fileID: 4498554533791859355}
   resourcesUsed: []
-  residents: 1
-  maxResidents: 1
+  popAmount: 0
+  maxPop: 0
+  pops: []
+  buildingsInRange: []
 --- !u!114 &5887775813337426641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,24 +88,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: 0f0068617291d43418baf48cc4927434, type: 3}
   iconOnMenu: {fileID: 0}
+  description: {fileID: 0}
   type: 1
   menuCategory: 1
   obsolete: {fileID: 0}
   useMaxAmount: 0
   maxAmount: 0
---- !u!114 &138669900454346041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6134359838356149884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: A small hut housing Pop. Grants Science per Pop.
 --- !u!114 &1452620005565125667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +132,6 @@ MonoBehaviour:
   building: {fileID: 0}
   yieldCounter: {fileID: 1452620005565125667}
   range: {fileID: 0}
-  useDailyCapacity: 0
-  dailyCapacity: 0
 --- !u!114 &5958532341142893860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +154,6 @@ MonoBehaviour:
   building: {fileID: 0}
   yieldCounter: {fileID: 2232228029768318449}
   range: {fileID: 0}
-  useDailyCapacity: 0
-  dailyCapacity: 0
 --- !u!114 &2232228029768318449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +170,20 @@ MonoBehaviour:
   range: {fileID: 0}
   multiplier: 0.5
   forcePopToBuilding: 0
+--- !u!114 &7470577076187365285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134359838356149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781e69c3fc0eecf4a8c75e04cf841c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: A small, basic hut house, in which Pops can live.
+  household: {fileID: 6134359838356149886}
 --- !u!1001 &2222361493709732053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,11 +191,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6134359838356149885}
     m_Modifications:
-    - target: {fileID: 1738895833323559595, guid: ab46f7acd3587f9429853c8e0bf41496,
-        type: 3}
-      propertyPath: m_Name
-      value: Hut House test model
-      objectReference: {fileID: 0}
     - target: {fileID: 2230897975447946803, guid: ab46f7acd3587f9429853c8e0bf41496,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,6 +260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738895833323559595, guid: ab46f7acd3587f9429853c8e0bf41496,
+        type: 3}
+      propertyPath: m_Name
+      value: Hut House test model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab46f7acd3587f9429853c8e0bf41496, type: 3}

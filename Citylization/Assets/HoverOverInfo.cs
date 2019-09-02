@@ -11,10 +11,10 @@ public class HoverOverInfo : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
 
-    public void Show(Unlockable unlockable) {
+    public void Show(Unlockable unlockable, bool addDetails) {
         panel.SetActive(true);
         nameText.text = unlockable.name;
-        descriptionText.text = unlockable.description.description;
+        descriptionText.text = unlockable.description.ObjectDescription(addDetails);
     }
 
     public void Hide() {

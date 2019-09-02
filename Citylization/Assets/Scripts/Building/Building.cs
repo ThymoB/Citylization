@@ -14,11 +14,12 @@ public class Building : MonoBehaviour
 
     [Header("Requirements")]
     public List<BuildingRequired> buildingsRequired = new List<BuildingRequired>();
-    public int population;
+    public int populationRequired;
         
 
     [Header("Models")]
     public List<GameObject> models;
+    [HideInInspector]
     public GameObject selectedModel;
 
     [Header("Abilities")]

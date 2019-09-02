@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5309508255237376637}
   - component: {fileID: 8489229279325420687}
-  - component: {fileID: 818441715513097491}
   - component: {fileID: 7001112712175753029}
   - component: {fileID: 983072723486721919}
+  - component: {fileID: 1377627517270134815}
   m_Layer: 10
   m_Name: Dirt Path
   m_TagString: Road
@@ -49,24 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: 6fdf971c9f4fee8489b16f860470a580, type: 3}
   iconOnMenu: {fileID: 0}
+  description: {fileID: 0}
   type: 2
   menuCategory: 7
   obsolete: {fileID: 0}
   useMaxAmount: 0
   maxAmount: 0
---- !u!114 &818441715513097491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052661566782854924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: A small dirt path
 --- !u!114 &7001112712175753029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +81,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7159704, y: 0.18531775, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
+--- !u!114 &1377627517270134815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052661566782854924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de74c1b266388e428f3f528c155a641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2166909858650571727
 GameObject:
   m_ObjectHideFlags: 0

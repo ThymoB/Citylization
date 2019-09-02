@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858614317551625879}
-  - component: {fileID: 1858614317551625873}
+  - component: {fileID: 3376712203481970688}
   - component: {fileID: 1858614317551625872}
   - component: {fileID: 2997335699254945501}
   - component: {fileID: -2947134293249751022}
-  - component: {fileID: 7480977593516313668}
   - component: {fileID: 6248013365001267321}
   m_Layer: 0
   m_Name: Library
@@ -37,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1858614317551625873
+--- !u!114 &3376712203481970688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,19 +45,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1858614317551625878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48835a4d6d07a9e4f9e341c0254ca65d, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a87c4fbecd26d4fa3b923d8995982c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canBePickedUp: 0
   needsToBeRoadside: 1
   size: {x: 3, y: 3}
+  purchaseCosts: []
+  buildingsRequired: []
+  populationRequired: 0
   models:
-  - {fileID: 3978521611021181203, guid: c3101b346c80bb84da3368c03d4b80b8, type: 3}
+  - {fileID: 3386024727513488149}
+  selectedModel: {fileID: 3386024727513488149}
   abilities: []
   openAllDay: 0
-  openTime: 7
-  closeTime: 20
+  openTime: 8
+  closeTime: 18
   operating: 0
+  usePopCapacity: 0
+  currentPops: 0
+  popCapacity: 0
   resourceYields:
   - {fileID: 1858614317551625872}
   resourcesUsed: []
@@ -81,11 +87,9 @@ MonoBehaviour:
   useFixedDailyYield: 0
   fixedDailyYieldTime: 0
   getBuildingOperatingTime: 0
-  building: {fileID: 1858614317551625873}
+  building: {fileID: 3376712203481970688}
   yieldCounter: {fileID: 6248013365001267321}
-  range: {fileID: 0}
-  useDailyCapacity: 0
-  dailyCapacity: 10
+  range: {fileID: 2997335699254945501}
 --- !u!114 &2997335699254945501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,22 +118,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconOnTechTree: {fileID: 21300000, guid: 79cd9d00147ceed4aa5794bac8165530, type: 3}
   iconOnMenu: {fileID: 0}
+  description: {fileID: 0}
   type: 0
   menuCategory: 7
   obsolete: {fileID: 0}
---- !u!114 &7480977593516313668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858614317551625878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e222ad2117b33b43b102df3fbbdf06d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: A Library
+  useMaxAmount: 0
+  maxAmount: 0
 --- !u!114 &6248013365001267321
 MonoBehaviour:
   m_ObjectHideFlags: 0
