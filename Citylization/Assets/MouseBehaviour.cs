@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MouseMode { Free, CarryingBuilding, PreselectingRoad, PuttingDownRoad }
 
@@ -13,7 +14,7 @@ public class MouseBehaviour : MonoBehaviour
     public MouseMode mode = MouseMode.Free;
     public LayerMask terrainLayer;
     public RoadPlacer roadPlacer;
-
+    public HoverOverInfo hoverOverInfo;
     public RaycastHit hit;
     public Ray ray;
     public Vector3 mousePosition;
