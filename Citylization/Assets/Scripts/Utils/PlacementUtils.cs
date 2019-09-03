@@ -29,4 +29,31 @@ public class PlacementUtils : MonoBehaviour
         return vertexPoints;
     }
 
+    public static Road GetClosestRoad(Vector3 point, float snapRadius) {
+        Road road = null;
+        Collider[] colliders = Physics.OverlapSphere(point, snapRadius);
+        float minDistance = Mathf.Infinity;
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Road") {
+                Road curRoad = collider.GetComponent<Road>();
+                float curDistance = Vector3.Distance(curRoad.transform.position, point);
+                if (curDistance < minDistance) road = curRoad;
+            }
+        }
+        return road;
+
+    }
+    public static Node GetClosestNode(Vector3 point, float snapRadius) {
+        Node node = null;
+        Collider[] colliders = Physics.OverlapSphere(point, snapRadius);
+        float minDistance = Mathf.Infinity;
+        foreach (Collider collider in colliders) {
+            if (collider.tag == "Node") {
+                Node curNode = collider.GetComponent<Node>();
+                float curDistance = Vector3.Distance(curNode.transform.position, point);
+                if (curDistance < minDistance) node = curNode;
+            }
+        }
+        return node;
+    }
 }

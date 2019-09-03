@@ -20,6 +20,8 @@ public class Building : MonoBehaviour
     [Header("Models")]
     public List<GameObject> models;
     [HideInInspector]
+    public Renderer rend;
+    [HideInInspector]
     public GameObject selectedModel;
 
     [Header("Abilities")]

@@ -159,31 +159,13 @@ public  class RoadPlacer : MonoBehaviour
     }
 
     bool GetNodeAtPoint(Vector3 point, out Node node) {
-        node = null;
-        Collider[] colliders = Physics.OverlapSphere(point, snapSize);
-        float minDistance = Mathf.Infinity;
-        foreach (Collider collider in colliders) {
-            if (collider.tag == "Node") {
-                Node curNode = collider.GetComponent<Node>();
-                float curDistance = Vector3.Distance(curNode.transform.position, point);
-                if (curDistance < minDistance) node = curNode;
-            }
-        }
+        node = PlacementUtils.GetClosestNode(point, snapSize);
         if (node != null) return true;
         else return false;
     }
 
     bool GetRoadAtPoint(Vector3 point, out Road road) {
-        road = null;
-        Collider[] colliders = Physics.OverlapSphere(point, snapSize);
-        float minDistance = Mathf.Infinity;
-        foreach (Collider collider in colliders) {
-            if (collider.tag == "Road") {
-                Road curRoad = collider.GetComponent<Road>();
-                float curDistance = Vector3.Distance(curRoad.transform.position, point);
-                if (curDistance < minDistance) road = curRoad;
-            }
-        }
+        road = PlacementUtils.GetClosestRoad(point, snapSize);
         if (road != null) return true;
         else return false;
     }
@@ -195,8 +177,6 @@ public  class RoadPlacer : MonoBehaviour
     public void CurveRoad() {
         if (creatingLine) {
             SetEndPoint(mouseBehaviour.mousePosition, ClickType.Free);
-
-
         }
     }
 

@@ -1404,11 +1404,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allUnlockables:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 987981055367886343, guid: 8aea3941d9138df4ab04b7a9b75976f5, type: 3}
+  - {fileID: -2947134293249751022, guid: 0768021c7ba3aee4da9f507d744b47d0, type: 3}
+  - {fileID: 8489229279325420687, guid: a50634793d0983d4f8455ca1f7812354, type: 3}
+  - {fileID: 4884224040615173805, guid: 676ccd6cbd2241940a2971db3676f993, type: 3}
+  - {fileID: 5887775813337426641, guid: a3530dda5849a5844a7041e72b7f7468, type: 3}
   buildMenuButtons:
   - {fileID: 7792081208998560294}
   unlockedColor: {r: 1, g: 1, b: 1, a: 0.8039216}
@@ -2593,12 +2593,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1284158018}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: InfoScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1284158018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3115,6 +3115,7 @@ MonoBehaviour:
   - {fileID: 244236447}
   learnedTechnologies:
   - {fileID: 11400000, guid: 1a310031147cde942ac9eb84b931eb5f, type: 2}
+  - {fileID: 11400000, guid: 2cc0c3ced5143c94ea5c3c62f341c643, type: 2}
   techTree: {fileID: 614177747}
   mouseBehaviour: {fileID: 1469130975}
 --- !u!4 &1469130973
@@ -3167,6 +3168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableType: 1
   building: {fileID: 0}
+  buildingRoadSnapRadius: 0.8
   road: {fileID: 0}
   selectedUnlockable: {fileID: 0}
   mode: 0
@@ -3174,7 +3176,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   roadPlacer: {fileID: 1337935350}
-  hoverOverInfo: {fileID: 0}
+  hoverOverInfo: {fileID: 500724229}
   mousePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1475978666
 GameObject:
@@ -4018,7 +4020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2035452487
 RectTransform:
   m_ObjectHideFlags: 0

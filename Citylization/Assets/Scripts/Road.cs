@@ -10,7 +10,6 @@ public class Road : MonoBehaviour
     public int lanes = 1;
     public float speedLimit = 5f;
     public TravelType travelType;
+    public float width = 0.4f;
     //public GameObject roadSegment;
-
-
 }
